@@ -34,9 +34,13 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 |---|---|
 | [SPEC.md](SPEC.md) | Normative format specification |
 | [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) | Copy-and-fill template (lints clean, shows all claims) |
-| [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](examples/AIDR-0001-spin-out-aidr-from-turnfile.md) | Real record: the decision to create this project, currently open |
+| [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](examples/AIDR-0001-spin-out-aidr-from-turnfile.md) | Real record: the decision to create this project, arbitrated 2026-07-02 (accepted as drafted) |
 | [PRIOR_ART.md](PRIOR_ART.md) | Survey of adjacent work and the gap AIDR fills |
 | [INTENT.md](INTENT.md) | Where this project is going |
+| [CONFORMANCE.md](CONFORMANCE.md) | Claim definitions and current fixture coverage |
+| [CHANGELOG.md](CHANGELOG.md) | Notable changes, Keep a Changelog format |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose changes |
+| [SECURITY.md](SECURITY.md) | How to report a vulnerability |
 | [tools/aidr-lint.mjs](tools/aidr-lint.mjs) | Reference linter, zero dependencies |
 
 ## When to use AIDR
@@ -48,6 +52,10 @@ Need session-scale governance (multiple agents working over time, mailboxes, tur
 ## Relationship to AgDR
 
 [Agent Decision Records (AgDR)](https://github.com/me2resh/agent-decision-record) documents decisions an AI coding agent makes during development. AIDR is complementary: it covers decisions with multiple independent agent positions, first-class dissent, and required human arbitration. See [PRIOR_ART.md](PRIOR_ART.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Changes to SPEC.md normative text require a Maintainer decision.
 
 ## License
 
