@@ -6,6 +6,14 @@ An AIDR is one markdown file recording one consequential decision made with AI a
 
 No runtime. No service. No protocol to learn. Copy one template, fill it in when a decision matters.
 
+## Who this is for
+
+Teams making high-consequence decisions with AI agents — architecture calls, release gates, security-relevant changes, public claims — who will later need to reconstruct who objected before acting and who held the authority to resolve it.
+
+## What problem it solves
+
+Multi-model tools increasingly surface where models disagree, then the disagreement evaporates into a chat answer; execution logs record what ran, not who dissented or who decided. AIDR captures independent agent positions, preserved dissent, and required human arbitration in one plain-text file that survives tool changes.
+
 ## Canonical URL
 
 https://aidr.work/
@@ -92,4 +100,4 @@ Code: Apache-2.0 ([LICENSE](LICENSE)). Specification and documentation prose: CC
 
 ## About
 
-AIDR is a [PAICE.work](https://paice.work/) project by Sam Rogers, distilled from the [Turnfile](https://turnfile.work/) protocol.
+AIDR is a [PAICE.work](https://paice.work/) project, distilled from the [Turnfile](https://turnfile.work/) protocol. PAICE.work PBC is a public benefit corporation building infrastructure for productive collaboration between humans and autonomous agents. A portable, human-arbitrated record of where AI agents disagreed before a decision is a natural expression of that mission.
