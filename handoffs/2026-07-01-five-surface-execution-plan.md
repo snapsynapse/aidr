@@ -61,30 +61,25 @@ Gates are decision triggers, not dates. Any surface can be dropped if its gate n
 
 ## Phase 1: format, ratification, public surface
 
-### T1.1 Sam arbitrates AIDR-0001 (human; agent assists only)
+### T1.1 Sam arbitrates AIDR-0001 — DONE 2026-07-02
 
-- Ask Sam to arbitrate [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](../examples/AIDR-0001-spin-out-aidr-from-turnfile.md).
-- On his decision: he authors (or dictates) the Arbitration section; set `status: arbitrated`, add `decided:` date.
-- Acceptance: `node tools/aidr-lint.mjs examples/` passes and reports `human-arbitrated`.
+- Accepted as drafted; Arbitration section transcribed at Maintainer direction; `human-arbitrated` claim earned.
 
-### T1.2 Gather independent peer positions on AIDR-0001 (optional, high value)
+### T1.2 First multi-model record: AIDR-0002, spec ratification (recommended next)
 
-- Ask Sam whether to collect positions from Codex (OpenAI) and/or Gemini (Google), e.g. via a Turnfile session in `~/Git/turnfile` or direct prompting in their own tools.
-- Append each as a `### Position:` subsection with correct provider metadata, authored by that agent, before arbitration if possible.
-- Acceptance: lint reports `independent-positions` on AIDR-0001. This makes the founding record the format's own best demo.
+- AIDR-0001 was arbitrated with a single position, which is honest and final (positions recorded after arbitration cannot earn `independent-positions`). The demo moment moves to the next real decision: ratifying SPEC.md v0.1.0.
+- Open `decisions/AIDR-0002-ratify-spec-v0.1.0.md` in this repo. Gather independent positions from Claude (Anthropic), Codex (OpenAI), and Gemini (Google) BEFORE Sam arbitrates.
+- Two routes: (a) a normal Turnfile session in `~/Git/turnfile` with this question as a lane — note the Claude lane is model-agnostic and already validated on Fable 5 (Turnfile session 14), so no new onboarding is needed; or (b) lightweight direct prompting of each agent in its own tool, pasting positions in. Route (a) also produces cross-protocol dogfood evidence; prefer it if session overhead is acceptable.
+- Acceptance: AIDR-0002 lint-passes with `independent-positions`, then Sam arbitrates (T1.8 executes the ratification mechanics).
 
-### T1.3 Name and domain (human decision, then mechanical propagation)
+### T1.3 Name and domain — DONE 2026-07-02
 
-- Sam picks final name + domain (see stop-and-ask list for verified candidates).
-- If the name changes from "AI Decision Records (AIDR)": update every occurrence in README.md, SPEC.md, INTENT.md, PRIOR_ART.md, LICENSE-SPEC, template, example, linter usage strings, and the `AIDR-` id prefix rule in SPEC.md section 3 plus the linter regexes. Grep to verify: `grep -ri aidr ~/Git/aidr --include="*.md" --include="*.mjs" -l`.
-- Acceptance: zero stale-name occurrences; lint green.
+- Name confirmed: AI Decision Records (AIDR). Domain purchased: aidr.work. Canonical URL https://aidr.work/ propagated to README, INTENT, portfolio.yaml.
 
-### T1.4 GitHub repo + push (gated on Sam)
+### T1.4 GitHub repo + push — DONE 2026-07-02 (private)
 
-- `gh repo create snapsynapse/aidr --public --source ~/Git/aidr --push` (adjust name per T1.3).
-- Set description and topics: `gh repo edit --description "..." --add-topic decision-records --add-topic ai-governance --add-topic adr --add-topic multi-agent`.
-- Update `~/Git/portfolio.yaml`: fill the `github:` field, remove `status: incubating` when Sam confirms admission is final.
-- Acceptance: repo public, README renders, portfolio.yaml honest.
+- Created `snapsynapse/aidr` as PRIVATE at Maintainer direction; public flip is a pending Maintainer decision (see INTENT open decisions). Description + topics set.
+- Remaining when public flip happens: confirm README renders, re-check portfolio.yaml `status: incubating` removal with Sam.
 
 ### T1.5 AgDR interop issue (contribute-over-compete; post only after Sam approves)
 

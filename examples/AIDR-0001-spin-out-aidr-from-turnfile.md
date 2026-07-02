@@ -1,8 +1,9 @@
 ---
 id: AIDR-0001
 title: Deliver Turnfile's governance concept as a single-file decision record standard
-status: open
+status: arbitrated
 date: 2026-07-01
+decided: 2026-07-02
 arbiter: Sam Rogers
 tags: [turnfile, pivot, adoption, aidr]
 ---
@@ -31,6 +32,12 @@ ADRs achieved near-universal adoption because the cost to adopt is one template 
 ## Objections
 
 ## Arbitration
+
+- decided_by: Sam Rogers
+- date: 2026-07-02
+- decision: Create AIDR as a new standalone spec repository, with Turnfile retained separately as the full session protocol.
+
+Maintainer's written direction of 2026-07-02: "I accept the AIDR-0001 as drafted." No objections were recorded and no opposing positions were filed, so there is nothing further to address. The domain aidr.work was purchased the same day, confirming the working name. Transcription note: this section was transcribed into the record by Claude (Fable 5) at the Maintainer's direction; the decision and its wording are the Maintainer's own.
 
 ## Evidence
 

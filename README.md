@@ -6,6 +6,10 @@ An AIDR is one markdown file recording one consequential decision made with AI a
 
 No runtime. No service. No protocol to learn. Copy one template, fill it in when a decision matters.
 
+## Canonical URL
+
+https://aidr.work/
+
 ## Why
 
 Multi-model tools (councils, juries, AI code review) increasingly show you where models disagree, then the disagreement evaporates into a chat answer. Execution logs tell you what ran. Neither answers the audit question that matters for high-consequence work: who objected before we acted, and who decided. AIDR makes that answer a plain file in your repo.

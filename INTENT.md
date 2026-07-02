@@ -57,9 +57,10 @@ Decision triggers, not dates. Any surface can be dropped if its gate never fires
 
 ## Open decisions (Maintainer)
 
-- Ratify AIDR-0001 (create the project) or counter.
-- Name and domain: working name "AI Decision Records (AIDR)". Verified available 2026-07-01: aidr.work, aidecisionrecords.com, decisionrecord.ai. Unverified: aidr.dev. Known out-of-domain acronym collision: AIDR (AI for Disaster Response, QCRI); judged non-blocking, different field.
-- GitHub repo creation, visibility, and push timing (local commit made 2026-07-02 at Maintainer direction; `portfolio.yaml` entry added as incubating the same day).
+- Ratify SPEC.md v0.1.0 (flip `status: draft` to `status: ratified`) and tag the v0.1.0 release; recommended as the first multi-model record (AIDR-0002, see handoff T1.2).
+- Flip the GitHub repo from private to public, and go-live timing for the aidr.work landing page.
+
+Resolved: AIDR-0001 arbitrated 2026-07-02 (accepted as drafted). Name confirmed "AI Decision Records (AIDR)"; canonical URL https://aidr.work/ (purchased 2026-07-02). Private repo `snapsynapse/aidr` created 2026-07-02.
 
 ## Execution
 
