@@ -1,0 +1,28 @@
+# AIDR
+
+> One-file AI decision records with human arbitration
+
+Multi-model tools increasingly show you where models disagree, then the disagreement evaporates into a chat answer. Execution logs tell you what ran. Neither answers who objected before we acted, and who decided. AIDR makes that answer a plain file in your repo.
+
+## Concepts
+
+- AIDR: one markdown file recording one consequential decision made with AI agents
+- independent-positions: two or more positions from distinct providers, recorded before arbitration
+- dissent-preserved: disagreement exists and the arbitration addresses it
+- human-arbitrated: a human, not a model, made and signed the decision
+
+## Key files
+
+- [Spec](https://github.com/snapsynapse/aidr/blob/main/SPEC.md): The normative specification
+- [Template](https://github.com/snapsynapse/aidr/blob/main/templates/AIDR-0000-template.md): Copy-and-fill starting point
+- [Changelog](https://github.com/snapsynapse/aidr/blob/main/CHANGELOG.md): Version history
+- [Landing page](https://aidr.work/): Canonical homepage
+
+## Links
+
+- GitHub: https://github.com/snapsynapse/aidr
+- Homepage: https://aidr.work/
+
+## Related patterns
+
+- [Turnfile](https://turnfile.work/): The full session governance protocol AIDR distills to one file

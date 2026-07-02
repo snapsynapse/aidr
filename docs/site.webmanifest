@@ -1,0 +1,21 @@
+{
+  "name": "AI Decision Records (AIDR)",
+  "short_name": "AIDR",
+  "description": "One-file AI decision records with human arbitration",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "orientation": "any",
+  "theme_color": "#b45309",
+  "background_color": "#ffffff",
+  "lang": "en-US",
+  "categories": ["reference", "developer-tools"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
