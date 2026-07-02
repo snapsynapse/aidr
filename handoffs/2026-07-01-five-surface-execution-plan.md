@@ -93,12 +93,19 @@ Post to https://github.com/me2resh/agent-decision-record/issues after Sam review
 
 - Acceptance: issue posted, URL recorded in PRIOR_ART.md under the AgDR row.
 
-### T1.6 Repo polish + canonical spec page (Sam's environment skills)
+### T1.6 Repo polish + canonical spec page — skills run 2026-07-02, page built, not yet live
 
-- Run the `repo-polish` skill, then the `canonical-spec-page` skill (in that order, per portfolio convention) against `~/Git/aidr`.
-- canonical-spec-page produces `docs/index.html` with SEO meta, JSON-LD, OG cards, and a WCAG 2.1 AA pass; OG image at `/imgs/og.png`; include robots.txt with AI-crawler allows and llms.txt per portfolio hygiene.
-- URL conventions: bare domain, https, never www.
-- Acceptance: GitHub Pages serves the landing page at the chosen domain; skill checklists pass.
+- Ran `repo-polish` then `canonical-spec-page` (in that order) against `~/Git/aidr`. CHANGELOG.md, CONTRIBUTING.md, SECURITY.md, CONFORMANCE.md, `.github/` templates added. `docs/index.html` built: SEO meta, JSON-LD (TechArticle + DefinedTerm), OG/Twitter meta (no `og:image`, no source image exists yet), light theme, amber accent, convergence-mark logo, skill-a11y-audit WCAG 2.1 AA pass (0 violations). robots.txt with AI-crawler allows, llms.txt, sitemap.xml, 404.html, site.webmanifest, favicon.svg all committed under `docs/`.
+- Also adopted GuideCheck Level 2: `assistant-guide.txt` at repo root and `docs/.well-known/` (byte-identical), referenced from `docs/llms.txt`, README, and `docs/index.html` head + footer.
+- Not yet acceptance-complete: GitHub Pages is not configured and the repo is still private, so nothing serves at aidr.work yet. `/imgs/og.png` does not exist; produce one and re-run canonical-spec-page's C3/C3b steps to wire it back in.
+- Acceptance (original bar, still open): GitHub Pages serves the landing page at the chosen domain. Gated on the public-flip Maintainer decision (see INTENT.md "Open decisions").
+
+### T1.9 Claude Skill (parallel track, not gated)
+
+- A `.claude/skills/aidr/SKILL.md` bundle (or a home in the portfolio skills monorepo, `~/Git/skills/aidr/`) teaching an agent to open a record from the template, record a position with correct metadata, file an objection, check lint status, and request arbitration, never author it (ground rule 4). Consumes only the existing template and `tools/aidr-lint.mjs`; no new dependency, no format change, so ground rule 6 is a non-issue.
+- Cheaper than phase 2's MCP server: no SDK, no server process, works in any skill-compatible harness today. Can ship any time after the template and linter are stable; not gated like phases 2-5.
+- Real use of the skill in a live session counts as dogfooding evidence toward phase 2's "dogfooded in at least two PAICE repos" gate.
+- Acceptance: skill installed in at least one PAICE repo's `.claude/skills/`, exercised end to end on one real (not synthetic) AIDR record.
 
 ### T1.7 Dogfood in two PAICE repos (phase 2 gate evidence)
 

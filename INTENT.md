@@ -1,7 +1,7 @@
 ---
 title: "AIDR INTENT"
-version: "0.1.1"
-last_updated: 2026-07-01
+version: "0.1.2"
+last_updated: 2026-07-02
 status: pre-ratification-draft
 description: "Component-level strategy for AIDR as the minimal single-artifact expression of Turnfile's governance concept, plus the delivery-surface roadmap built on it."
 tags: [intent, strategy, aidr, governance, decision-records]
@@ -42,6 +42,10 @@ AIDR the format is phase 1 of a five-surface plan. Each later surface consumes o
 
 Decision triggers, not dates. Any surface can be dropped if its gate never fires.
 
+### Companion surface: Claude Skill (not gated)
+
+A Claude Skill (`SKILL.md`, no MCP server, no new dependency) is a zero-infrastructure complement to phase 2. It teaches an agent to open a record from the template, record a position with correct metadata, file an objection, check lint status, and request arbitration, never author it (design invariant 4). It consumes only the existing template and `tools/aidr-lint.mjs`, so it carries no format risk under ground rule 6. Cheaper than the MCP server (no SDK, no server process, works in any skill-compatible harness today), it can ship any time after the template and linter are stable, independent of phase 2's own gate. Real use of the skill in a live session counts as dogfooding evidence toward phase 2's gate. See handoff T1.9 for the task-level detail.
+
 ## Contribute-over-compete commitments
 
 - AgDR (me2resh/agent-decision-record): propose interop and cross-linking; credit prominently. AIDR does not duplicate AgDR's single-agent use case.
@@ -68,5 +72,6 @@ The sequenced, task-level execution plan for all five surfaces lives at `handoff
 
 ## Changelog
 
+- 2026-07-02 v0.1.2 - Added Claude Skill as a non-gated companion surface to the delivery-surface roadmap (handoff T1.9). Adopted GuideCheck Level 2 (`assistant-guide.txt` at repo root and `docs/.well-known/`, byte-identical).
 - 2026-07-02 v0.1.1 - Local commit authorized; portfolio.yaml incubating entry added; execution handoff added; open-decisions list reconciled.
 - 2026-07-01 v0.1.0 - Initial draft: scope, Turnfile relationship, invariants, five-surface roadmap, contribute-over-compete commitments. Authored by Claude (Fable 5) at Maintainer direction; pending arbitration via AIDR-0001.

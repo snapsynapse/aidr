@@ -14,3 +14,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - PRIOR_ART.md: survey of adjacent formats (ADR, MADR, AgDR, FINOS AIR)
 - CONTRIBUTING.md, SECURITY.md, CONFORMANCE.md
 - Dual license: Apache-2.0 for code, CC BY 4.0 for specification and documentation text
+- Canonical landing page (docs/index.html) plus favicon, CNAME, sitemap.xml, robots.txt, llms.txt, site.webmanifest, 404.html
+- assistant-guide.txt (repo root and docs/.well-known/, byte-identical): GuideCheck Level 2 conformant install guide for AI agents

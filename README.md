@@ -41,6 +41,7 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 | [CHANGELOG.md](CHANGELOG.md) | Notable changes, Keep a Changelog format |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose changes |
 | [SECURITY.md](SECURITY.md) | How to report a vulnerability |
+| [assistant-guide.txt](assistant-guide.txt) | Plain-text install guide for AI agents (GuideCheck Level 2) |
 | [tools/aidr-lint.mjs](tools/aidr-lint.mjs) | Reference linter, zero dependencies |
 
 ## When to use AIDR

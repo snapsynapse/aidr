@@ -17,6 +17,7 @@ Multi-model tools increasingly show you where models disagree, then the disagree
 - [Template](https://github.com/snapsynapse/aidr/blob/main/templates/AIDR-0000-template.md): Copy-and-fill starting point
 - [Changelog](https://github.com/snapsynapse/aidr/blob/main/CHANGELOG.md): Version history
 - [Landing page](https://aidr.work/): Canonical homepage
+- [Assistant Guide](https://aidr.work/.well-known/assistant-guide.txt): bounded assistant install and operational instructions (GuideCheck Level 2)
 
 ## Links
 
