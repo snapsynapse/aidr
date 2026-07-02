@@ -1,0 +1,31 @@
+AI Decision Records (AIDR) — Specification and Documentation License
+
+The AIDR specification and documentation text — SPEC.md, README narrative,
+templates, and documentation prose — are licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0).
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the license, and
+indicate if changes were made.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+Attribution: "AI Decision Records (AIDR)" by Sam Rogers / PAICE.work PBC
+
+SPDX-License-Identifier: CC-BY-4.0
+
+---
+
+## License scope
+
+This repository is dual-licensed by content type (see also LICENSE):
+
+- Reference code and tools: Apache License 2.0 (LICENSE).
+- Specification and documentation text: Creative Commons Attribution 4.0
+  International (CC BY 4.0) — this file.
+
+Decision records you author using the AIDR format are your own work; neither
+license applies to them.
+
+When in doubt: code is Apache-2.0, prose is CC BY 4.0. SPDX: `Apache-2.0 AND CC-BY-4.0`.

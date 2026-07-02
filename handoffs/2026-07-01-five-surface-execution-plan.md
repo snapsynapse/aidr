@@ -1,0 +1,165 @@
+---
+title: "AIDR Five-Surface Execution Plan"
+version: "1.0.0"
+date: 2026-07-01
+status: active-handoff
+description: "Self-contained execution handoff for the AIDR delivery-surface roadmap. Written for Opus/Sonnet-level agents; no prior conversation context required."
+tags: [aidr, handoff, execution-plan, roadmap]
+---
+# AIDR five-surface execution plan
+
+Audience: any capable coding agent (Claude Opus/Sonnet class or equivalent) executing with Sam Rogers as Maintainer. This document is self-contained. Do not rely on prior chat context.
+
+## Orientation
+
+AIDR (AI Decision Records) is a one-file markdown format for recording consequential decisions made with AI agents: the question, each agent's independent position, objections, and human arbitration. It is the minimal single-artifact expression of the Turnfile protocol (https://turnfile.work/), created 2026-07-01 as a standalone repo (not a fork) to maximize adoption via the ADR playbook: one template, zero required tooling.
+
+Read order before doing anything: `README.md`, then `SPEC.md`, then `INTENT.md`, then `PRIOR_ART.md`, then `examples/AIDR-0001-spin-out-aidr-from-turnfile.md`.
+
+Validation command (must pass after every change to spec, template, or examples):
+```bash
+node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md
+```
+
+## Ground rules (violating any of these is a failed task)
+
+1. One decision, one file. Never add session state, task tracking, or transcripts to the format.
+2. The linter stays zero-dependency. The format stays adoptable with no tooling at all.
+3. Dissent is never deleted. Records are superseded, not rewritten.
+4. Arbitration is human. No agent (including you) may author or edit an Arbitration section or fill `decided`/`decided_by` fields. You may transcribe text Sam explicitly dictates, and must say so in the record.
+5. Vendor-neutral: no field, tool, or example may require a specific model provider.
+6. Spec changes require Maintainer ratification. Delivery surfaces (phases 2 to 5) must consume the format as-is; if a surface seems to need a format change, stop and escalate.
+7. SPEC.md section names, frontmatter keys, and claim names are frozen API once v0.1.0 is ratified. Additive optional fields only, via Maintainer decision.
+
+## Stop-and-ask triggers (Maintainer decisions, never yours)
+
+- Anything published or posted outside the local machine: GitHub repo creation, pushes, issues on external repos, domain purchases, landing page go-live.
+- The project name (working name "AI Decision Records (AIDR)") and domain choice. Verified available 2026-07-01: aidr.work, aidecisionrecords.com, decisionrecord.ai. Unverified: aidr.dev. Known out-of-domain collision: AIDR = AI for Disaster Response (QCRI), judged non-blocking.
+- Any change to SPEC.md normative text.
+- Arbitration of any AIDR record.
+When asking Sam for a decision, always include the clickable markdown link to the file needing action.
+
+## State snapshot (2026-07-01)
+
+- Repo at `~/Git/aidr`, branch `main`, initial commit made, no remote, not pushed.
+- Contents: SPEC.md v0.1.0-draft, README.md, INTENT.md, PRIOR_ART.md, template, example AIDR-0001 (status open, one position, awaiting Sam's arbitration), zero-dep linter, Apache-2.0 + CC BY 4.0 licenses, this handoff.
+- Lint status: all green. Template earns all three claims; AIDR-0001 correctly earns none yet (single position, open).
+- Portfolio manifest `~/Git/portfolio.yaml` carries an `aidr` component entry marked incubating.
+- Turnfile is untouched and NOT deprecated: it is the advanced profile. Its INTENT.md should record the AIDR relationship only after Sam arbitrates AIDR-0001, and that edit goes through Turnfile's own governance (Maintainer-gated, multi-agent repo).
+
+## Phase gates (summary)
+
+| Phase | Surface | Gate to enter |
+|---|---|---|
+| 1 | Format + spec page | Started (this repo) |
+| 2 | MCP server | Spec ratified; format stable one release cycle; dogfooded in 2+ PAICE repos |
+| 3 | GitHub Action | MCP server proves write path; 1+ external adopter of the format |
+| 4 | Second-opinion SDK | Extracted from phase 3 fan-out once it works; not built standalone |
+| 5 | CI governance gate | Surfaces 1 to 3 producing records in the wild |
+
+Gates are decision triggers, not dates. Any surface can be dropped if its gate never fires. Do not start a phase before its gate; do not skip a gate without a recorded Maintainer decision (record it as an AIDR in `decisions/`).
+
+## Phase 1: format, ratification, public surface
+
+### T1.1 Sam arbitrates AIDR-0001 (human; agent assists only)
+
+- Ask Sam to arbitrate [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](../examples/AIDR-0001-spin-out-aidr-from-turnfile.md).
+- On his decision: he authors (or dictates) the Arbitration section; set `status: arbitrated`, add `decided:` date.
+- Acceptance: `node tools/aidr-lint.mjs examples/` passes and reports `human-arbitrated`.
+
+### T1.2 Gather independent peer positions on AIDR-0001 (optional, high value)
+
+- Ask Sam whether to collect positions from Codex (OpenAI) and/or Gemini (Google), e.g. via a Turnfile session in `~/Git/turnfile` or direct prompting in their own tools.
+- Append each as a `### Position:` subsection with correct provider metadata, authored by that agent, before arbitration if possible.
+- Acceptance: lint reports `independent-positions` on AIDR-0001. This makes the founding record the format's own best demo.
+
+### T1.3 Name and domain (human decision, then mechanical propagation)
+
+- Sam picks final name + domain (see stop-and-ask list for verified candidates).
+- If the name changes from "AI Decision Records (AIDR)": update every occurrence in README.md, SPEC.md, INTENT.md, PRIOR_ART.md, LICENSE-SPEC, template, example, linter usage strings, and the `AIDR-` id prefix rule in SPEC.md section 3 plus the linter regexes. Grep to verify: `grep -ri aidr ~/Git/aidr --include="*.md" --include="*.mjs" -l`.
+- Acceptance: zero stale-name occurrences; lint green.
+
+### T1.4 GitHub repo + push (gated on Sam)
+
+- `gh repo create snapsynapse/aidr --public --source ~/Git/aidr --push` (adjust name per T1.3).
+- Set description and topics: `gh repo edit --description "..." --add-topic decision-records --add-topic ai-governance --add-topic adr --add-topic multi-agent`.
+- Update `~/Git/portfolio.yaml`: fill the `github:` field, remove `status: incubating` when Sam confirms admission is final.
+- Acceptance: repo public, README renders, portfolio.yaml honest.
+
+### T1.5 AgDR interop issue (contribute-over-compete; post only after Sam approves)
+
+Post to https://github.com/me2resh/agent-decision-record/issues after Sam reviews this draft:
+
+> Title: Interop proposal: AgDR + AIDR (multi-agent decision records with human arbitration)
+>
+> Hi! I maintain AIDR (AI Decision Records), a decision-record format distilled from the Turnfile multi-agent governance protocol. AgDR is the closest prior art we found, and we think the two are complementary rather than overlapping: AgDR documents decisions an AI coding agent makes during development; AIDR covers decisions where multiple independent agents (ideally different providers) record positions, objections are preserved, and a human signs the arbitration.
+>
+> Proposal: (1) cross-link the two projects in each README with a one-line "when to use which"; (2) keep frontmatter keys compatible where they overlap (id, title, status, date) so tooling can index both; (3) an AgDR record may link out to an AIDR when a decision escalated to multi-agent review. Happy to send PRs for any of these if welcome. AIDR credits AgDR in its spec and prior-art survey.
+
+- Acceptance: issue posted, URL recorded in PRIOR_ART.md under the AgDR row.
+
+### T1.6 Repo polish + canonical spec page (Sam's environment skills)
+
+- Run the `repo-polish` skill, then the `canonical-spec-page` skill (in that order, per portfolio convention) against `~/Git/aidr`.
+- canonical-spec-page produces `docs/index.html` with SEO meta, JSON-LD, OG cards, and a WCAG 2.1 AA pass; OG image at `/imgs/og.png`; include robots.txt with AI-crawler allows and llms.txt per portfolio hygiene.
+- URL conventions: bare domain, https, never www.
+- Acceptance: GitHub Pages serves the landing page at the chosen domain; skill checklists pass.
+
+### T1.7 Dogfood in two PAICE repos (phase 2 gate evidence)
+
+- Author real AIDRs for live decisions. Candidate venues: a `decisions/` dir in `paice-foundation` (portfolio-level bets fit AIDR well) and one product repo (e.g. a PAICE2 architecture call or a tokenese scope decision).
+- Each record must be a real decision Sam actually arbitrates, not a synthetic demo.
+- Acceptance: 2+ arbitrated records in other repos, lint-passing, at least one carrying `independent-positions`.
+
+### T1.8 Ratify and tag v0.1.0
+
+- After T1.1 and any spec feedback: Sam ratifies SPEC.md; flip its `status: draft` to `status: ratified`; add CHANGELOG.md; tag `v0.1.0`; `gh release create`.
+- Acceptance: tagged release with spec, template, linter; lint green in a fresh clone.
+
+## Phase 2: MCP server
+
+Goal: agents in any MCP host (Claude Code, Codex, Cursor, Windsurf, ADK hosts) read and write conforming AIDR files through tools instead of reading the spec. Kills per-agent skill-bundle drift.
+
+Location: `mcp/` inside this repo (same component, second surface; split out only if it grows). Node + `@modelcontextprotocol/sdk`, stdio transport.
+
+Tools (all writes MUST pass `tools/aidr-lint.mjs` logic before saving; reuse its functions by extracting them into `tools/lib/` first):
+- `aidr_open`: args title, question, context, arbiter, dir (default `decisions/`). Creates next-numbered file from template, status open. Returns id + path.
+- `aidr_record_position`: args id, agent, model, provider, stance, summary, prose. Appends a Position subsection. MUST refuse if status is not open. MUST refuse a second position for the same agent label.
+- `aidr_file_objection`: args id, agent, target, prose. Appends an Objection subsection. MUST refuse if status is not open.
+- `aidr_status`: args id or dir. Returns frontmatter, position/objection counts, earned claims, lint result.
+- `aidr_check_open_dissent`: args dir. Lists open records with unaddressed oppose/alternative stances or objections; intended for session-start hygiene.
+- `aidr_request_arbitration`: args id. Marks nothing; returns a formatted summary for the human arbiter with a link to the file. There is intentionally NO tool that writes the Arbitration section (ground rule 4). The human edits the file directly.
+
+Tests: `node --test` fixtures covering every refusal path and a full open-to-arbitrated lifecycle (arbitration step simulated by direct file edit, as a human would).
+
+Acceptance: all tools emit lint-PASS files; refusal paths tested; README section documents host setup for Claude Code and one non-Anthropic host; dogfooded in one real session.
+
+## Phase 3: GitHub Action (the reach play)
+
+Goal: on a PR, N heterogeneous models independently review the same diff; their positions and disagreements are posted as one PR comment; on merge, the decision is written back as an AIDR file. No mainstream tool does heterogeneous-family disagreement surfacing as of mid-2026 (see PRIOR_ART.md); this is the differentiator. Positions only: the Action MUST never approve, request changes, merge, or push code.
+
+Shape: JavaScript action (node20), inputs:
+- `models`: list like `anthropic:claude-sonnet-5,openai:gpt-5,google:gemini-3-pro` (2+ providers required for the independent-positions claim).
+- API keys via repo secrets, one per provider; skip a provider gracefully if its key is absent, and say so in the comment.
+- `paths`: optional filter; `max-diff-kb`: cost cap, default conservative; oversize diffs get a summary-only prompt.
+Flow: collect diff and PR description; prompt each model in isolation (no model sees another's output; same prompt template, provider-specific client); each returns stance, summary, prose, objections in a JSON shape mirroring SPEC.md section 5.3; render one comment: positions table, then a Disagreements section listing concrete conflicts; write `decisions/AIDR-NNNN-pr-<num>.md` (status open) into the PR branch or as an artifact, per an input flag. Human merge + a follow-up `arbitrated` edit completes the record.
+Acceptance: green run on a real PR in an aidr-family repo with 2+ providers; comment readable; emitted file lint-passes; runaway-cost test (large diff) stays under cap.
+
+## Phase 4: second-opinion SDK (extraction, not construction)
+
+Extract the phase 3 fan-out core into a package (working name `@paice/aidr`): `gatherPositions({question, context, participants}) -> record object`, `renderAidr(record) -> markdown`, `writeAidr(record, dir)`. Positions only, never execution. Publish only when a second consumer beyond the Action exists (the MCP server or an external adopter). Acceptance: Action depends on the package with no behavior change.
+
+## Phase 5: CI governance gate
+
+Goal: CODEOWNERS-style enforcement of review diversity. A policy file at repo root, e.g.:
+```toml
+# GOVERNANCE.toml
+[[rule]]
+paths = ["spec/**", "SECURITY.md"]
+require = ["independent-positions", "human-arbitrated"]
+```
+`aidr-check` (new tool, zero-dep like the linter) runs in CI: for changed paths matching a rule, require a lint-passing record in `decisions/` that carries the required claims and references the change (PR number or commit in Evidence). Missing record fails the check with a copy-pasteable remediation snippet. A `refs:` frontmatter field may be needed; that is a spec change, so it goes to the Maintainer first (ground rule 6). Acceptance: gate enforced on the aidr repo itself for `SPEC.md` changes.
+
+## Provenance
+
+Authored 2026-07-01 by Claude (Fable 5) in a Claude Code session at Maintainer (Sam Rogers) direction, alongside the initial repo scaffold. Prior-art evidence and the spin-out rationale live in PRIOR_ART.md and examples/AIDR-0001. Keep this handoff updated as phases complete: mark tasks done with dates rather than deleting them.

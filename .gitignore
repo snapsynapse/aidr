@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Windows local metadata
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Active session workspace (tracked as of session 13)
+# working-session/
+
+# Node
+node_modules/
+
+# Claude Code local config
+.claude/
+
+# Research / scratch
+.perplexity-research/
+
+# --- baseline additions (automated audit 2026-04-21) ---
+.env
+.env.*
+__pycache__/
+*.pyc
+dist/
+build/
+.venv/
+venv/
+.vercel
+
+# --- baseline hygiene (inherited from turnfile 2026-07-01) ---
+# handoffs/ is TRACKED in this repo by design: execution handoffs are durable
+# deliverables here, not session scratch. Deviation from the turnfile baseline.
+working/
+.turnfile-guard-overrides.log
