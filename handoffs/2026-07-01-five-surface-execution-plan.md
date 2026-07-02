@@ -93,12 +93,14 @@ Post to https://github.com/me2resh/agent-decision-record/issues after Sam review
 
 - Acceptance: issue posted, URL recorded in PRIOR_ART.md under the AgDR row.
 
-### T1.6 Repo polish + canonical spec page — skills run 2026-07-02, page built, not yet live
+### T1.6 Repo polish + canonical spec page — DONE 2026-07-02, live at aidr.work
 
 - Ran `repo-polish` then `canonical-spec-page` (in that order) against `~/Git/aidr`. CHANGELOG.md, CONTRIBUTING.md, SECURITY.md, CONFORMANCE.md, `.github/` templates added. `docs/index.html` built: SEO meta, JSON-LD (TechArticle + DefinedTerm), OG/Twitter meta (no `og:image`, no source image exists yet), light theme, amber accent, convergence-mark logo, skill-a11y-audit WCAG 2.1 AA pass (0 violations). robots.txt with AI-crawler allows, llms.txt, sitemap.xml, 404.html, site.webmanifest, favicon.svg all committed under `docs/`.
 - Also adopted GuideCheck Level 2: `assistant-guide.txt` at repo root and `docs/.well-known/` (byte-identical), referenced from `docs/llms.txt`, README, and `docs/index.html` head + footer.
-- Not yet acceptance-complete: GitHub Pages is not configured and the repo is still private, so nothing serves at aidr.work yet. `/imgs/og.png` does not exist; produce one and re-run canonical-spec-page's C3/C3b steps to wire it back in.
-- Acceptance (original bar, still open): GitHub Pages serves the landing page at the chosen domain. Gated on the public-flip Maintainer decision (see INTENT.md "Open decisions").
+- Maintainer enabled GitHub Pages on the private repo and it went live same day. Post-deploy verification found and fixed two gaps: `https_enforced` was off (`gh api --method PUT repos/snapsynapse/aidr/pages -F https_enforced=true`, HTTP now 301s to HTTPS as expected), and `docs/.well-known/assistant-guide.txt` 404'd in production even with `.nojekyll` present (a known GitHub Pages quirk, not just Jekyll's normal dot-path exclusion: a fresh MISS from origin still 404'd after a build that included `.nojekyll`). Fix: drop `.nojekyll`, add `docs/_config.yml` with `include: [".well-known"]`, let Jekyll run. Safe here because none of this site's files carry YAML front matter, so Jekyll treats them all as static passthrough regardless; confirmed by re-checking every path (`/`, `robots.txt`, `llms.txt`, `sitemap.xml`, `favicon.svg`, `site.webmanifest`, the custom `404.html`) after the fix, all unchanged. `assistant-guide.txt` now serves at the canonical `.well-known` path with a SHA-256 matching the local file exactly.
+- `/imgs/og.png` still does not exist; produce one and re-run canonical-spec-page's C3/C3b steps to wire it back in.
+- Acceptance: met. GitHub Pages serves the landing page at aidr.work; skill checklists pass. Repo itself remains private, that's a separate open Maintainer decision (see INTENT.md "Open decisions").
+- Portfolio note: any other repo using the `docs/` + `docs/.well-known/` pattern on GitHub's legacy Jekyll build type may have the same silent `.well-known` 404 even with `.nojekyll` present. Worth a live check on repos with this pair (see LocalBrain `0_Across/Repo Standards.md` drift register).
 
 ### T1.9 Claude Skill (parallel track, not gated)
 

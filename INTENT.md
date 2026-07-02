@@ -62,9 +62,9 @@ A Claude Skill (`SKILL.md`, no MCP server, no new dependency) is a zero-infrastr
 ## Open decisions (Maintainer)
 
 - Ratify SPEC.md v0.1.0 (flip `status: draft` to `status: ratified`) and tag the v0.1.0 release; recommended as the first multi-model record (AIDR-0002, see handoff T1.2).
-- Flip the GitHub repo from private to public, and go-live timing for the aidr.work landing page.
+- Flip the GitHub repo from private to public. The landing page itself is live (see Resolved below); the repo backing it is not.
 
-Resolved: AIDR-0001 arbitrated 2026-07-02 (accepted as drafted). Name confirmed "AI Decision Records (AIDR)"; canonical URL https://aidr.work/ (purchased 2026-07-02). Private repo `snapsynapse/aidr` created 2026-07-02.
+Resolved: AIDR-0001 arbitrated 2026-07-02 (accepted as drafted). Name confirmed "AI Decision Records (AIDR)"; canonical URL https://aidr.work/ (purchased 2026-07-02). Private repo `snapsynapse/aidr` created 2026-07-02. aidr.work landing page went live 2026-07-02 (GitHub Pages on the private repo; HTTPS enforced, DNS verified against all four expected IPs, assistant-guide.txt confirmed served byte-identical at the canonical `.well-known` path). Repo stays private, GitHub Pages on a private repo still serves a fully public site per the portfolio's own privacy-by-layout convention.
 
 ## Execution
 
