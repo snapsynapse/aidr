@@ -1,14 +1,14 @@
 ---
 title: "AIDR INTENT"
-version: "0.1.2"
+version: "0.1.3"
 last_updated: 2026-07-02
-status: pre-ratification-draft
+status: active
 description: "Component-level strategy for AIDR as the minimal single-artifact expression of Turnfile's governance concept, plus the delivery-surface roadmap built on it."
 tags: [intent, strategy, aidr, governance, decision-records]
 ---
 # AIDR INTENT
 
-Component-scoped strategy. Portfolio-level strategy lives in `paice-foundation/INTENT.md`. The decision to create this project is itself recorded as [examples/AIDR-0001](examples/AIDR-0001-spin-out-aidr-from-turnfile.md) and is open pending Maintainer arbitration; until arbitrated, everything here is draft.
+Component-scoped strategy. Portfolio-level strategy lives in `paice-foundation/INTENT.md`. The decision to create this project is itself recorded as [examples/AIDR-0001](examples/AIDR-0001-spin-out-aidr-from-turnfile.md), arbitrated and accepted by the Maintainer on 2026-07-02: the project's founding, human-reviewed kickoff. That founding record was single-position by design; every subsequent decision is recorded as an AIDR carrying independent model positions with Maintainer arbitration (SPEC v0.1.0 ratification is next, tracked as AIDR-0002 under Open decisions).
 
 ## What this is
 
@@ -19,7 +19,7 @@ AIDR re-expresses Turnfile's core concept (independent agent positions, preserve
 - Turnfile remains the full session protocol: lifecycle, mailboxes, ownership, closeout, validators. Not deprecated, not forked.
 - AIDR is the front door; Turnfile is the advanced profile. A team that outgrows single-decision records graduates to Turnfile sessions.
 - Conceptual lineage is by citation, not shared code or shared history. This repo stays dependency-free and small.
-- Turnfile's INTENT should record this relationship once the Maintainer arbitrates AIDR-0001; that edit goes through Turnfile's own governance.
+- Turnfile's INTENT should record this relationship now that the Maintainer has arbitrated AIDR-0001 (2026-07-02); that edit goes through Turnfile's own governance.
 
 ## Design invariants
 
@@ -72,6 +72,7 @@ The sequenced, task-level execution plan for all five surfaces lives at `handoff
 
 ## Changelog
 
+- 2026-07-02 v0.1.3 - Reconciled AIDR-0001 to its arbitrated-accepted outcome (2026-07-02, human-reviewed founding kickoff): lifted the pre-ratification-draft framing that was gated on AIDR-0001, set status to active, and resolved the contradiction between the intro and the Open-decisions Resolved note. SPEC v0.1.0 ratification remains pending as AIDR-0002.
 - 2026-07-02 v0.1.2 - Added Claude Skill as a non-gated companion surface to the delivery-surface roadmap (handoff T1.9). Adopted GuideCheck Level 2 (`assistant-guide.txt` at repo root and `docs/.well-known/`, byte-identical).
 - 2026-07-02 v0.1.1 - Local commit authorized; portfolio.yaml incubating entry added; execution handoff added; open-decisions list reconciled.
 - 2026-07-01 v0.1.0 - Initial draft: scope, Turnfile relationship, invariants, five-surface roadmap, contribute-over-compete commitments. Authored by Claude (Fable 5) at Maintainer direction; pending arbitration via AIDR-0001.
