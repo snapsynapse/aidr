@@ -6,8 +6,17 @@ AIDR is a small specification plus a zero-dependency reference linter. Contribut
 
 Validate any change to the spec, template, or examples:
 ```bash
-node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md
+node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/
 ```
+
+Run the conformance suite, which checks the linter against known-invalid and known-valid
+records (see `tests/README.md`):
+```bash
+node tests/run.mjs
+```
+
+If you add or change a rule in `tools/aidr-lint.mjs`, add a matching fixture under
+`tests/fixtures/` in the same change.
 
 ## Change Rules
 
@@ -32,6 +41,7 @@ A record is the single source of truth for its own decision. By design AIDR has 
 
 ## Pull Request Checklist
 
-- Linter passes: `node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md`
+- Linter passes: `node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/`
+- Conformance suite passes: `node tests/run.mjs`
 - Changes to SPEC.md normative text are called out in the PR description; expect a Maintainer decision before merge.
 - CHANGELOG.md entry added for user-visible changes.

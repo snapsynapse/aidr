@@ -29,7 +29,13 @@ Claims are verifiable by any party from the file alone. This report is informati
 
 ## Local Verification
 ```bash
-node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md
+node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/
+node tests/run.mjs
 ```
 
-CI is not yet configured for this repository; tracked in the delivery-surface roadmap (INTENT.md).
+The first command lints the shipped records. The second runs the conformance suite
+(`tests/README.md`), which pins the reference linter to SPEC.md: every invalid fixture
+must be rejected on its specific rule, and every valid record must earn exactly its
+claim set. Suite last run 2026-07-02: 18/18 checks passed.
+
+CI is not yet configured for this repository; tracked in the delivery-surface roadmap (INTENT.md). The suite is written to run unchanged as a CI step once configured.

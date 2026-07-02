@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Conformance suite (tests/run.mjs, tests/fixtures/): zero-dependency negative and positive fixtures pinning the reference linter to SPEC.md; one invalid fixture per linter error branch plus valid records with asserted claim sets
+
 ## [0.1.0] - 2026-07-02
 
 Specification ratified. Recorded in [AIDR-0002](decisions/AIDR-0002-ratify-spec-v0.1.0.md): independent positions from Claude (Anthropic), Codex (OpenAI), and Gemini (Google), arbitrated by the Maintainer. `SPEC.md` frontmatter is now `status: ratified`; section names, frontmatter keys, and claim names are frozen API per CONTRIBUTING.md.

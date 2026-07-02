@@ -8,7 +8,7 @@ tags: [aidr, specification, governance, decision-records, agents]
 ---
 # AI Decision Records (AIDR) Specification
 
-Version 0.1.0 (draft). The key words MUST, MUST NOT, SHOULD, and MAY are to be interpreted as described in RFC 2119.
+Version 0.1.0 (ratified 2026-07-02). The key words MUST, MUST NOT, SHOULD, and MAY are to be interpreted as described in RFC 2119.
 
 ## 1. Purpose
 
