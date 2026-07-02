@@ -1,6 +1,6 @@
 ---
 title: "AIDR INTENT"
-version: "0.1.3"
+version: "0.1.4"
 last_updated: 2026-07-02
 status: active
 description: "Component-level strategy for AIDR as the minimal single-artifact expression of Turnfile's governance concept, plus the delivery-surface roadmap built on it."
@@ -8,7 +8,7 @@ tags: [intent, strategy, aidr, governance, decision-records]
 ---
 # AIDR INTENT
 
-Component-scoped strategy. Portfolio-level strategy lives in `paice-foundation/INTENT.md`. The decision to create this project is itself recorded as [examples/AIDR-0001](examples/AIDR-0001-spin-out-aidr-from-turnfile.md), arbitrated and accepted by the Maintainer on 2026-07-02: the project's founding, human-reviewed kickoff. That founding record was single-position by design; every subsequent decision is recorded as an AIDR carrying independent model positions with Maintainer arbitration (SPEC v0.1.0 ratification is next, tracked as AIDR-0002 under Open decisions).
+Component-scoped strategy. Portfolio-level strategy lives in `paice-foundation/INTENT.md`. The decision to create this project is itself recorded as [examples/AIDR-0001](examples/AIDR-0001-spin-out-aidr-from-turnfile.md), arbitrated and accepted by the Maintainer on 2026-07-02: the project's founding, human-reviewed kickoff. That founding record was single-position by design; every subsequent decision is recorded as an AIDR carrying independent model positions with Maintainer arbitration. The first such multi-model record is [decisions/AIDR-0002](decisions/AIDR-0002-ratify-spec-v0.1.0.md), which ratified SPEC v0.1.0 on 2026-07-02 (independent positions from Anthropic, OpenAI, and Google; arbitrated by the Maintainer).
 
 ## What this is
 
@@ -61,10 +61,9 @@ A Claude Skill (`SKILL.md`, no MCP server, no new dependency) is a zero-infrastr
 
 ## Open decisions (Maintainer)
 
-- Ratify SPEC.md v0.1.0 (flip `status: draft` to `status: ratified`) and tag the v0.1.0 release; recommended as the first multi-model record (AIDR-0002, see handoff T1.2).
 - Flip the GitHub repo from private to public. The landing page itself is live (see Resolved below); the repo backing it is not.
 
-Resolved: AIDR-0001 arbitrated 2026-07-02 (accepted as drafted). Name confirmed "AI Decision Records (AIDR)"; canonical URL https://aidr.work/ (purchased 2026-07-02). Private repo `snapsynapse/aidr` created 2026-07-02. aidr.work landing page went live 2026-07-02 (GitHub Pages on the private repo; HTTPS enforced, DNS verified against all four expected IPs, assistant-guide.txt confirmed served byte-identical at the canonical `.well-known` path). Repo stays private, GitHub Pages on a private repo still serves a fully public site per the portfolio's own privacy-by-layout convention.
+Resolved: SPEC.md v0.1.0 ratified 2026-07-02 via [AIDR-0002](decisions/AIDR-0002-ratify-spec-v0.1.0.md) (`status: draft` to `status: ratified`), the first multi-model record: independent positions from Anthropic (Claude), OpenAI (Codex), and Google (Gemini), all recommending, arbitrated by the Maintainer. This clears the phase-1 ratification gate in the delivery-surface roadmap. AIDR-0001 arbitrated 2026-07-02 (accepted as drafted). Name confirmed "AI Decision Records (AIDR)"; canonical URL https://aidr.work/ (purchased 2026-07-02). Private repo `snapsynapse/aidr` created 2026-07-02. aidr.work landing page went live 2026-07-02 (GitHub Pages on the private repo; HTTPS enforced, DNS verified against all four expected IPs, assistant-guide.txt confirmed served byte-identical at the canonical `.well-known` path). Repo stays private, GitHub Pages on a private repo still serves a fully public site per the portfolio's own privacy-by-layout convention.
 
 ## Execution
 
@@ -72,6 +71,7 @@ The sequenced, task-level execution plan for all five surfaces lives at `handoff
 
 ## Changelog
 
+- 2026-07-02 v0.1.4 - SPEC v0.1.0 ratified via AIDR-0002 (first multi-model record: Anthropic, OpenAI, Google positions, Maintainer-arbitrated). Moved ratification from Open decisions to Resolved; noted the phase-1 ratification gate is cleared; updated the intro to point at AIDR-0002 as the founding record's multi-model successor.
 - 2026-07-02 v0.1.3 - Reconciled AIDR-0001 to its arbitrated-accepted outcome (2026-07-02, human-reviewed founding kickoff): lifted the pre-ratification-draft framing that was gated on AIDR-0001, set status to active, and resolved the contradiction between the intro and the Open-decisions Resolved note. SPEC v0.1.0 ratification remains pending as AIDR-0002.
 - 2026-07-02 v0.1.2 - Added Claude Skill as a non-gated companion surface to the delivery-surface roadmap (handoff T1.9). Adopted GuideCheck Level 2 (`assistant-guide.txt` at repo root and `docs/.well-known/`, byte-identical).
 - 2026-07-02 v0.1.1 - Local commit authorized; portfolio.yaml incubating entry added; execution handoff added; open-decisions list reconciled.

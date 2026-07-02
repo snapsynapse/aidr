@@ -35,6 +35,7 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 | [SPEC.md](SPEC.md) | Normative format specification |
 | [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) | Copy-and-fill template (lints clean, shows all claims) |
 | [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](examples/AIDR-0001-spin-out-aidr-from-turnfile.md) | Real record: the decision to create this project, arbitrated 2026-07-02 (accepted as drafted) |
+| [decisions/AIDR-0002-ratify-spec-v0.1.0.md](decisions/AIDR-0002-ratify-spec-v0.1.0.md) | Real multi-model record: ratifying this spec, independent positions from Anthropic, OpenAI, and Google, arbitrated 2026-07-02 |
 | [PRIOR_ART.md](PRIOR_ART.md) | Survey of adjacent work and the gap AIDR fills |
 | [INTENT.md](INTENT.md) | Where this project is going |
 | [CONFORMANCE.md](CONFORMANCE.md) | Claim definitions and current fixture coverage |

@@ -1,7 +1,7 @@
 # Conformance Report
 
 Report date: 2026-07-02
-Spec version: `0.1.0-draft`
+Spec version: `0.1.0` (ratified 2026-07-02, AIDR-0002)
 
 ## Claims
 
@@ -21,8 +21,11 @@ Claims are verifiable by any party from the file alone. This report is informati
 |---|---|---|
 | `templates/AIDR-0000-template.md` | template | `independent-positions`, `dissent-preserved`, `human-arbitrated` |
 | `examples/AIDR-0001-spin-out-aidr-from-turnfile.md` | arbitrated | `human-arbitrated` |
+| `decisions/AIDR-0002-ratify-spec-v0.1.0.md` | arbitrated | `independent-positions`, `human-arbitrated` |
 
 `AIDR-0001` earns only `human-arbitrated`: it was arbitrated with a single position, so it correctly does not earn `independent-positions`, and no dissent was recorded, so it correctly does not earn `dissent-preserved`.
+
+`AIDR-0002` earns `independent-positions` (three positions from distinct providers: Anthropic, OpenAI, Google, all recorded before arbitration) and `human-arbitrated`. It does not earn `dissent-preserved`: all three positions recommended and no objection was filed, so there is no dissent to preserve.
 
 ## Local Verification
 ```bash

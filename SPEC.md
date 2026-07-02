@@ -1,8 +1,8 @@
 ---
 title: "AI Decision Records (AIDR) Specification"
 version: "0.1.0"
-status: draft
-last_updated: 2026-07-01
+status: ratified
+last_updated: 2026-07-02
 description: "A single-file markdown format for recording decisions involving AI agents: independent positions, preserved dissent, and human arbitration."
 tags: [aidr, specification, governance, decision-records, agents]
 ---
