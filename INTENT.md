@@ -1,6 +1,6 @@
 ---
 title: "AIDR INTENT"
-version: "0.1.7"
+version: "0.1.8"
 last_updated: 2026-07-02
 status: active
 description: "Component-level strategy for AIDR as the minimal single-artifact expression of Turnfile's governance concept, plus the delivery-surface roadmap built on it."
@@ -100,10 +100,10 @@ Deviations from `0_Across/Repo Standards.md`, each with reason and status:
 - `handoffs/` is tracked, not gitignored (the baseline ignores it). Reason: execution handoffs here are durable deliverables, not session scratch. The same note lives in `.gitignore`. Status: intentional.
 - `assistant-guide.txt` is adopted at GuideCheck Level 2 — byte-identical root + `docs/.well-known/` pair, no manifest sidecar. The manifest sidecar is a Level 4+ artifact and is not adopted at the current level. Status: intentional; revisit on any promotion to Level 4+.
 - GitHub Pages serves `docs/.well-known/` via `docs/_config.yml` (`include: [".well-known"]`, Jekyll) rather than `.nojekyll`. Reason: on the legacy Jekyll build type `.nojekyll` did not stop `docs/.well-known/` returning 404; the include-based fix does (verified live 200). This is the documented portfolio remedy, recorded here so the absent `.nojekyll` is not read as drift.
-- No tagged release / GitHub Release yet. Reason: the first release is deferred to a `release-checklist` run after this standards-adoption pass lands. Status: pending first release.
 
 ## Changelog
 
+- 2026-07-02 v0.1.8 - First release tagged and published: v0.1.0 (GitHub Release, https://github.com/snapsynapse/aidr/releases/tag/v0.1.0). Removed the now-resolved "no tagged release yet" entry from Exceptions to Repo Standards.
 - 2026-07-02 v0.1.7 - Restructured INTENT into the 9-section repo-standards template (repo-standards-audit walk): added Why it exists, Scope boundaries, Conformance philosophy, Admission criteria for changes, and Exceptions to Repo Standards; folded Relationship to Turnfile and Contribute-over-compete into Relationships to other PAICE standards; preserved the delivery-surface roadmap, companion skill, open decisions, and execution sections. No strategy change. Companion standards-adoption edits in the same pass: fixed the LICENSE scope footer (spec prose was misattributed to "the Turnfile protocol" and listed nonexistent PRDs), added RELEASE_CHECKLIST.md, and generated docs/llms-full.txt.
 - 2026-07-02 v0.1.6 - AgDR interop issue opened (me2resh/agent-decision-record#8), clearing the last phase-1 gate. Emptied Open decisions (pointed forward to the phase-2 gate and the Claude Skill companion); moved the AgDR outreach to Resolved; recorded the incubating -> active graduation mirrored in portfolio.yaml.
 - 2026-07-02 v0.1.5 - Reconciled to the public state after the repo flipped public. Replaced the private-to-public open decision with the AgDR interop gate (now the last unmet phase-1 gate and the graduation condition for the portfolio manifest); folded the flip and its verification into Resolved; recorded portfolio membership as a standalone incubating `spec` component. Mirrors the `portfolio.yaml` aidr status/note reconciliation made the same day.
