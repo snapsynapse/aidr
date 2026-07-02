@@ -7,7 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- GitHub Actions CI for shipped-record linting and the conformance suite.
+- `Makefile` convenience targets: `make lint`, `make test`, and `make check`.
+- Public-readiness metadata: `CODE_OF_CONDUCT.md`, `SUPPORT.md`, `CITATION.cff`, and `.editorconfig`.
+- Gemini-ready OpenGraph image prompt in `docs/og-image-prompt.md`.
+- OpenGraph image at `imgs/og.png` and `docs/imgs/og.png`, wired into landing-page OG/Twitter metadata.
+- `make check` contributor shortcut documented in README.md and CONTRIBUTING.md.
 - Conformance suite (tests/run.mjs, tests/fixtures/): zero-dependency negative and positive fixtures pinning the reference linter to SPEC.md; one invalid fixture per linter error branch plus valid records with asserted claim sets
+
+### Changed
+
+- Documented that the reference linter checks structural prerequisites, while semantic arbitration review remains a human responsibility.
+- Ignored local agent/session coordination directories that should not be published as repository content.
 
 ## [0.1.0] - 2026-07-02
 

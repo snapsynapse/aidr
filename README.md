@@ -10,6 +10,16 @@ No runtime. No service. No protocol to learn. Copy one template, fill it in when
 
 https://aidr.work/
 
+## Adopt in 60 seconds
+
+```bash
+mkdir -p decisions
+cp templates/AIDR-0000-template.md decisions/AIDR-0001-your-decision.md
+node tools/aidr-lint.mjs decisions/
+```
+
+The linter is optional. It uses only Node.js built-ins and is tested on Node.js 20 in CI.
+
 ## Why
 
 Multi-model tools (councils, juries, AI code review) increasingly show you where models disagree, then the disagreement evaporates into a chat answer. Execution logs tell you what ran. Neither answers the audit question that matters for high-consequence work: who objected before we acted, and who decided. AIDR makes that answer a plain file in your repo.
@@ -42,9 +52,25 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 | [CHANGELOG.md](CHANGELOG.md) | Notable changes, Keep a Changelog format |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose changes |
 | [SECURITY.md](SECURITY.md) | How to report a vulnerability |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contribution conduct expectations |
+| [SUPPORT.md](SUPPORT.md) | Where to ask questions or report issues |
+| [CITATION.cff](CITATION.cff) | Citation metadata |
 | [assistant-guide.txt](assistant-guide.txt) | Plain-text install guide for AI agents (GuideCheck Level 2) |
 | [tools/aidr-lint.mjs](tools/aidr-lint.mjs) | Reference linter, zero dependencies |
 | [tests/](tests/) | Conformance suite: `node tests/run.mjs` pins the linter to SPEC.md (invalid + valid fixtures) |
+
+## Verify
+
+```bash
+make check
+```
+
+Equivalent commands:
+
+```bash
+node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/
+node tests/run.mjs
+```
 
 ## When to use AIDR
 

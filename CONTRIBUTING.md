@@ -4,6 +4,11 @@ AIDR is a small specification plus a zero-dependency reference linter. Contribut
 
 ## Development
 
+Fast path:
+```bash
+make check
+```
+
 Validate any change to the spec, template, or examples:
 ```bash
 node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/

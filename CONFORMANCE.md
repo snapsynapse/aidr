@@ -15,6 +15,8 @@ A conforming AIDR file may earn three claims, defined in SPEC.md section 7:
 
 Claims are verifiable by any party from the file alone. This report is informational; conformance is defined by SPEC.md, not by this document or the reference linter.
 
+The reference linter checks structural prerequisites for conformance and claim eligibility. It cannot prove semantic facts such as whether Arbitration prose adequately addresses every objection; those remain human review responsibilities.
+
 ## Fixture Coverage
 
 | Fixture | Status | Claims earned |
@@ -38,4 +40,4 @@ The first command lints the shipped records. The second runs the conformance sui
 must be rejected on its specific rule, and every valid record must earn exactly its
 claim set. Suite last run 2026-07-02: 18/18 checks passed.
 
-CI is not yet configured for this repository; tracked in the delivery-surface roadmap (INTENT.md). The suite is written to run unchanged as a CI step once configured.
+CI runs these same checks on pushes to `main` and on pull requests.

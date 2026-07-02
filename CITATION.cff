@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you cite or build on AIDR, cite the specification repository."
+title: "AI Decision Records (AIDR)"
+version: "0.1.0"
+date-released: 2026-07-02
+type: software
+authors:
+  - family-names: Rogers
+    given-names: Sam
+url: "https://aidr.work/"
+repository-code: "https://github.com/snapsynapse/aidr"
+license: "Apache-2.0"
+abstract: "AIDR is a single-file markdown format for recording AI-involved decisions: independent positions, preserved dissent, and human arbitration."

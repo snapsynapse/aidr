@@ -30,6 +30,7 @@ node_modules/
 
 # Claude Code local config
 .claude/
+.agents/
 
 # Research / scratch
 .perplexity-research/
@@ -48,5 +49,6 @@ venv/
 # --- baseline hygiene (inherited from turnfile 2026-07-01) ---
 # handoffs/ is TRACKED in this repo by design: execution handoffs are durable
 # deliverables here, not session scratch. Deviation from the turnfile baseline.
+working-session/
 working/
 .turnfile-guard-overrides.log
