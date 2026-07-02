@@ -1,0 +1,125 @@
+# AIDR — AI Decision Records (full)
+
+> One markdown file recording one consequential decision made with AI agents:
+> the question, each agent's independent position, objections, and the human
+> arbitration that resolved them. Like an ADR, but for decisions where models
+> hold positions and a human holds authority.
+
+Canonical: https://aidr.work/
+Repository: https://github.com/snapsynapse/aidr
+Updated: 2026-07-02
+
+## What AIDR is
+
+An AI Decision Record (AIDR) captures one consequential decision made with the
+participation of AI agents. It records the question, each participant's
+independent position, any objections, and the human arbitration that resolved
+them, in one plain markdown file that survives tool changes.
+
+AIDR answers two questions that execution logs and chat transcripts answer
+poorly: who objected before we acted, and who had the authority to resolve the
+disagreement. Multi-model tools (councils, juries, AI code review) increasingly
+show where models disagree, then the disagreement evaporates into a chat answer.
+Execution logs record what ran. Neither preserves dissent or arbitration. AIDR
+makes that a plain file in the adopter's repo.
+
+No runtime, no service, no protocol to learn. Copy one template, fill it in when
+a decision matters. The optional linter uses only Node.js built-ins.
+
+## Core concepts
+
+- AIDR: one markdown file recording one consequential decision made with AI agents.
+- independent-positions: two or more positions from distinct providers, recorded before arbitration.
+- dissent-preserved: disagreement exists in the record and the arbitration addresses it; dissent is never deleted.
+- human-arbitrated: a human, not a model, made and signed the decision.
+
+## Design rules
+
+1. One decision, one file. An AIDR is not a session log, task tracker, or transcript.
+2. Plain markdown plus YAML frontmatter. Readable and writable without tooling.
+3. Positions are first-class. A dissenting position is not an error state.
+4. Dissent is never deleted. Records are superseded, not rewritten.
+5. Arbitration is human. An agent MUST NOT author the Arbitration section.
+6. Vendor-neutral. No field requires any particular model, provider, or runtime.
+
+## File conventions
+
+- Records live in a `decisions/` directory at the repository or project root.
+- Filename: `AIDR-NNNN-short-slug.md`, NNNN zero-padded and unique within the directory.
+- UTF-8. The file begins with YAML frontmatter delimited by `---` lines.
+
+## Frontmatter fields
+
+Required: `id` (e.g. `AIDR-0007`, matches the filename prefix), `title`,
+`status` (`open` | `arbitrated` | `superseded`), `date` (ISO 8601 opened),
+`arbiter` (the human holding decision authority — MUST identify a human).
+
+Optional: `decided` (ISO 8601 date of arbitration; required when status is
+arbitrated or superseded), `supersedes`, `superseded_by` (required when status
+is superseded), `tags`.
+
+## Body sections (fixed order, level-2 headings)
+
+- Context (required): why the decision exists and what is at stake.
+- Question (required): a single decidable question.
+- Positions (required): one `### Position: <label>` per participant, each with a
+  metadata list (`agent`, `model`, `provider`, `stance` of recommend/oppose/
+  alternative/abstain, `summary`) then prose. A record claiming independent
+  multi-model review MUST contain at least two positions whose `provider` differ.
+- Objections (required content when dissent exists): one `### Objection:` per
+  objection, naming a concrete failure mode; never removed once recorded.
+- Arbitration (required when arbitrated or superseded): authored by the human
+  `arbiter`, with `decided_by`, `date`, `decision`, and prose that addresses
+  every recorded objection (accepted, rejected with reason, or deferred).
+
+## Adopt in 60 seconds
+
+```bash
+mkdir -p decisions
+cp templates/AIDR-0000-template.md decisions/AIDR-0001-your-decision.md
+node tools/aidr-lint.mjs decisions/
+```
+
+The linter is optional, uses only Node.js built-ins, and is tested on Node 20.
+
+## Conformance
+
+`CONFORMANCE.md` states the testable rules; `tools/aidr-lint.mjs` is the
+reference checker; `tests/run.mjs` is the conformance suite (valid + invalid
+fixtures). Conformance verifies form, not the quality of a decision.
+
+## Relationship to other work
+
+- Turnfile (https://turnfile.work/): the full multi-agent session governance
+  protocol — lifecycle, mailboxes, ownership, closeout, validators. AIDR is
+  Turnfile's concept at minimum viable size: one decision, one file. A team that
+  outgrows single-decision records graduates to Turnfile sessions. Lineage is by
+  citation, not shared code.
+- AgDR (https://github.com/me2resh/agent-decision-record): documents one AI
+  coding agent's decision mid-session. Complementary — AIDR records several
+  agents' independent positions plus required human arbitration. Interop
+  proposed (cross-linking + shared frontmatter keys).
+- ADR / MADR: direct ancestors; AIDR copies the one-template, no-runtime
+  adoption model and adds positions, preserved dissent, and human arbitration.
+
+See `PRIOR_ART.md` for the full survey.
+
+## Key files
+
+- Spec: https://github.com/snapsynapse/aidr/blob/main/SPEC.md
+- Template: https://github.com/snapsynapse/aidr/blob/main/templates/AIDR-0000-template.md
+- Conformance: https://github.com/snapsynapse/aidr/blob/main/CONFORMANCE.md
+- Prior art: https://github.com/snapsynapse/aidr/blob/main/PRIOR_ART.md
+- Changelog: https://github.com/snapsynapse/aidr/blob/main/CHANGELOG.md
+- Assistant guide: https://aidr.work/.well-known/assistant-guide.txt (GuideCheck Level 2)
+
+## License
+
+Reference code: Apache-2.0. Specification and documentation prose: CC BY 4.0.
+SPDX: `Apache-2.0 AND CC-BY-4.0`.
+
+## About
+
+AIDR is a PAICE.work project, distilled from the Turnfile protocol. PAICE.work
+PBC is a public benefit corporation building infrastructure for productive
+collaboration between humans and autonomous agents.

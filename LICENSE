@@ -197,8 +197,8 @@ This repository is dual-licensed by content type (see also LICENSE-SPEC):
 
 - Reference code, tools, schemas, and configuration (e.g. `tools/`, `schemas/`,
   `*.mjs`, `*.json`, config): Apache License 2.0 — the terms above, in this file.
-- Specification and documentation text (the Turnfile protocol prose: `docs/`,
-  PRDs, README narrative, and the landing page copy): Creative Commons
-  Attribution 4.0 International (CC BY 4.0) — see LICENSE-SPEC.
+- Specification and documentation text (the AIDR specification and prose:
+  `SPEC.md`, `docs/`, README narrative, and the landing page copy): Creative
+  Commons Attribution 4.0 International (CC BY 4.0) — see LICENSE-SPEC.
 
 When in doubt: code is Apache-2.0, prose is CC BY 4.0. SPDX: `Apache-2.0 AND CC-BY-4.0`.
