@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // AIDR linter conformance suite. Exercises the reference linter (tools/aidr-lint.mjs)
 // as shipped, against known-invalid records (each MUST fail on a specific rule) and
-// known-valid records (each MUST pass and earn an exact claim set). Zero dependencies.
+// known-valid records (each MUST pass and earn an exact claim set). Also runs the
+// assemble tool suite (tests/assemble.test.mjs) as one aggregated check. Zero dependencies.
 // Usage: node tests/run.mjs   (exit 0 when every check passes, 1 otherwise)
 
 import { execFileSync } from 'node:child_process';
@@ -53,6 +54,20 @@ const valid = [
 const sameSet = (a, b) => a.length === b.length && [...a].sort().join() === [...b].sort().join();
 let failures = 0;
 
+// The assemble tool keeps its own standalone suite; run it here as one aggregated
+// check so `node tests/run.mjs` stays the single entry point.
+function runAssembleSuite() {
+  console.log('assemble tool (delegates to tests/assemble.test.mjs):');
+  try {
+    const out = execFileSync('node', [join(here, 'assemble.test.mjs')], { encoding: 'utf8' });
+    console.log(out.trimEnd().split('\n').map((l) => '  ' + l).join('\n'));
+    return true;
+  } catch (e) {
+    console.log(((e.stdout ?? '') + (e.stderr ?? '')).trimEnd().split('\n').map((l) => '  ' + l).join('\n'));
+    return false;
+  }
+}
+
 console.log('invalid fixtures (must FAIL on the named rule):');
 for (const [file, expect] of invalid) {
   const { code, out } = lint(join(invalidDir, file));
@@ -73,6 +88,8 @@ for (const [path, claims] of valid) {
   console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${rel}  -> expected [${claims.join(', ')}], got [${got.join(', ')}]`);
 }
 
-const total = invalid.length + valid.length;
+if (!runAssembleSuite()) failures++;
+
+const total = invalid.length + valid.length + 1;
 console.log(`\n${failures === 0 ? 'PASS' : 'FAIL'}: ${total - failures}/${total} checks passed`);
 process.exit(failures === 0 ? 0 : 1);

@@ -1,7 +1,9 @@
 # AIDR conformance suite
 
-A conformance suite for the reference linter (`tools/aidr-lint.mjs`). It runs the
-linter as shipped and checks two things the everyday `PASS` output cannot:
+A conformance suite for the reference tools. `run.mjs` covers the linter
+(`tools/aidr-lint.mjs`) and delegates to `assemble.test.mjs` for the assemble tool
+(`tools/aidr-assemble.mjs`). It runs the linter as shipped and checks two things the
+everyday `PASS` output cannot:
 
 1. Every invalid record is rejected on its specific rule (not just rejected somehow).
 2. Every valid record earns exactly the claim set it should, no more, no fewer.
@@ -24,6 +26,10 @@ Exit 0 when every check passes, 1 otherwise. Zero dependencies (Node built-ins o
   its filename names the rule under test. `AIDR-99-bad-id.md` deliberately carries a
   malformed id; its filename matches that id so only the id-format rule fires.
 - `fixtures/valid/` — purpose-built records that MUST pass with a stated claim set.
+- `fixtures/assemble/` — inputs for the assemble tool suite: a brief, a good positions
+  dir (two providers, one embedded objection), and two malformed positions dirs. The
+  suite writes assembled output to a throwaway temp dir, never to `decisions/`, and
+  is also runnable standalone: `node tests/assemble.test.mjs`.
 - The suite also re-checks the three real records in the repo (`examples/`,
   `templates/`, `decisions/`) as a regression guard.
 
