@@ -38,6 +38,6 @@ node tests/run.mjs
 The first command lints the shipped records. The second runs the conformance suite
 (`tests/README.md`), which pins the reference linter to SPEC.md: every invalid fixture
 must be rejected on its specific rule, and every valid record must earn exactly its
-claim set. Suite last run 2026-07-02: 18/18 checks passed.
+claim set. Suite last run 2026-07-03: 19/19 checks passed.
 
 CI runs these same checks on pushes to `main` and on pull requests.
