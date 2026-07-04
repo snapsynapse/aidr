@@ -23,6 +23,7 @@ https://aidr.work/
 ```bash
 mkdir -p decisions
 cp templates/AIDR-0000-template.md decisions/AIDR-0001-your-decision.md
+# in the new file, set the id: field to AIDR-0001 so it matches the filename
 node tools/aidr-lint.mjs decisions/
 ```
 
@@ -34,7 +35,7 @@ Multi-model tools (councils, juries, AI code review) increasingly show you where
 
 ## Quick start
 
-1. Copy [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) to `decisions/AIDR-0001-your-decision.md`.
+1. Copy [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) to `decisions/AIDR-0001-your-decision.md`, and set the `id` field in the new file to `AIDR-0001` so it matches the filename.
 2. Have each agent (ideally from different providers) write its position independently.
 3. Record objections. Never delete them.
 4. The human arbiter writes the Arbitration section, addressing every objection.

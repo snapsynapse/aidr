@@ -21,6 +21,9 @@ Before acting
 Steps
 1. Pick the next sequence number and copy the template:
    cp templates/AIDR-0000-template.md decisions/AIDR-NNNN-slug.md
+   Then set the id field in the new file to AIDR-NNNN so it
+   matches the filename, and update the title, date, and arbiter
+   fields.
 2. Fill in the Context and Question sections in your own words.
 3. Add one "### Position: <agent>" subsection per participating
    agent. Each position needs agent, model, provider, stance, and
