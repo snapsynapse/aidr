@@ -46,9 +46,10 @@ build/
 venv/
 .vercel
 
-# --- baseline hygiene (inherited from turnfile 2026-07-01) ---
-# handoffs/ is TRACKED in this repo by design: execution handoffs are durable
-# deliverables here, not session scratch. Deviation from the turnfile baseline.
+# --- baseline hygiene ---
+# handoffs/ are private session scratch, gitignored in ALL of Sam's repos.
+# Standing rule 2026-07-04; supersedes the earlier "tracked by design" deviation.
+handoffs/
 working-session/
 working/
 .turnfile-guard-overrides.log
