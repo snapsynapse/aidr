@@ -3,7 +3,9 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.0] - 2026-07-05
+
+Repo release only: SPEC.md is unchanged and stays at spec v0.1.0 (no normative changes; spec version moves only by ratification record). This release ships the tooling, docs, and site work accumulated since launch.
 
 ### Added
 
@@ -18,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Canonical page (`docs/index.html`): byline updated-date and version brought current (v0.2.0, footer also names spec v0.1.0 separately), and first on-page GuideCheck reference added (footer links the Level 2 `assistant-guide.txt`); `CITATION.cff` and `docs/sitemap.xml` propagated per RELEASE_CHECKLIST.md
 - `tools/aidr-lint.mjs` and `tools/aidr-assemble.mjs` now reuse the shared core while preserving CLI behavior
 - Repo-polish refresh: CONFORMANCE.md report brought current (AIDR-0004 fixture row), `docs/llms-full.txt` gained the position-sweep recipe, agent skill, and why-not-synthesis sections, README Documents table lists the skill
 - Repo-standards gap audit: renamed the skill bundle `skill/aidr/` to canonical `skills/aidr/` and adopted Skill Provenance for it (`MANIFEST.yaml`, `CHANGELOG.md`); resynced the `assistant-guide.txt` root/`.well-known` pair to byte-identical; corrected a stale INTENT.md exception; ran skill-a11y-audit against `docs/why.html` (0 violations, 29 passes) since it had never been through the gate that `docs/index.html` cleared at launch
