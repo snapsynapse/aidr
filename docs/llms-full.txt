@@ -7,7 +7,7 @@
 
 Canonical: https://aidr.work/
 Repository: https://github.com/snapsynapse/aidr
-Updated: 2026-07-02
+Updated: 2026-07-05
 
 ## What AIDR is
 
@@ -81,6 +81,26 @@ node tools/aidr-lint.mjs decisions/
 ```
 
 The linter is optional, uses only Node.js built-ins, and is tested on Node 20.
+
+## Producing records mechanically
+
+- Position sweep (RECIPES.md): fan one decision brief to N models from distinct
+  providers, each answering in isolation; merge with `tools/aidr-assemble.mjs`
+  (zero dependencies) into one open record; `aidr-lint` verifies the result and
+  the `independent-positions` claim. Runner-agnostic: any way of invoking N
+  models works.
+- Agent skill (skills/aidr/SKILL.md): agent-agnostic instructions teaching an
+  agent to open a record, record a position, file an objection, assemble, check
+  claims, and request arbitration. An agent MUST NOT author the Arbitration
+  section.
+
+## Why not synthesis
+
+When models disagree, AIDR does not let a model resolve the disagreement.
+Synthesis destroys the three facts a consequential decision needs most: who
+held which position independently, what the dissent actually said, and who
+decided with accountability. Full essay: https://aidr.work/why.html
+(canonical markdown: WHY.md at the repository root).
 
 ## Conformance
 

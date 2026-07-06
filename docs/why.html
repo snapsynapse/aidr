@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>Why not synthesis - AIDR</title>
+  <meta name="description" content="The design refusal behind AIDR: when models disagree, no model resolves the disagreement. What synthesis destroys, what the record preserves, and what that costs.">
+  <meta name="keywords" content="aidr, ai decision records, model synthesis, llm council, dissent preserved, human arbitration, multi-agent disagreement">
+  <meta name="author" content="Sam Rogers">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#b45309">
+  <link rel="canonical" href="https://aidr.work/why.html">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="/favicon.svg" color="#b45309">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="alternate" type="text/plain" href="https://aidr.work/llms.txt" title="LLM-readable summary">
+  <link rel="assistant-guide" href="/.well-known/assistant-guide.txt">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="AIDR">
+  <meta property="og:title" content="Why not synthesis">
+  <meta property="og:description" content="When models disagree, AIDR does not let a model resolve the disagreement. Here is why.">
+  <meta property="og:url" content="https://aidr.work/why.html">
+  <meta property="og:image" content="https://aidr.work/imgs/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AIDR - AI Decision Records. Independent positions. Preserved dissent. Human arbitration.">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-07-05T00:00:00Z">
+  <meta property="article:author" content="Sam Rogers">
+  <meta property="article:publisher" content="https://paice.work/">
+  <meta property="article:section" content="Open Patterns">
+  <meta property="article:tag" content="aidr">
+  <meta property="article:tag" content="human-arbitration">
+  <meta property="article:tag" content="dissent-preserved">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why not synthesis - AIDR">
+  <meta name="twitter:description" content="When models disagree, AIDR does not let a model resolve the disagreement. Here is why.">
+  <meta name="twitter:image" content="https://aidr.work/imgs/og.png">
+  <meta name="twitter:image:alt" content="AIDR - AI Decision Records. Independent positions. Preserved dissent. Human arbitration.">
+  <meta name="twitter:site" content="@snapsynapse">
+  <meta name="twitter:creator" content="@snapsynapse">
+
+  <!-- JSON-LD: TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Why not synthesis",
+    "alternativeHeadline": "The design refusal behind AIDR",
+    "description": "When multiple models disagree, AIDR does not let a model resolve the disagreement. What synthesis destroys, what the record preserves, and what that costs.",
+    "inLanguage": "en",
+    "url": "https://aidr.work/why.html",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://aidr.work/why.html" },
+    "isPartOf": { "@type": "WebSite", "name": "AIDR", "url": "https://aidr.work/" },
+    "datePublished": "2026-07-05",
+    "dateModified": "2026-07-05",
+    "author": {
+      "@type": "Person",
+      "name": "Sam Rogers",
+      "url": "https://paice.work/",
+      "affiliation": { "@type": "Organization", "name": "PAICE.work PBC" }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PAICE.work PBC",
+      "url": "https://paice.work/",
+      "logo": { "@type": "ImageObject", "url": "https://paice.work/logo.png" }
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --text: #1a1a2e;
+      --text-muted: #64748b;
+      --accent: #b45309;
+      --accent-hover: #92400e;
+      --border: #e2e8f0;
+      --code-bg: #f1f5f9;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+      --max-width: 760px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      z-index: 100;
+    }
+    .skip-link:focus { left: 0; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    nav .container {
+      max-width: 960px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    nav .logo svg { color: var(--accent-hover); flex: 0 0 auto; }
+    nav .logo:hover svg { color: var(--accent); }
+    nav .links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.9rem; }
+    nav .links a { color: var(--text-muted); }
+    nav .links a:hover { color: var(--text); text-decoration: none; }
+
+    article { padding: 3.5rem 0 4rem; }
+    h1 { font-size: 2.4rem; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; margin-bottom: 0.75rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+    p { margin-bottom: 1rem; }
+    .lede { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .byline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .byline a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+    .byline a:hover { color: var(--accent-hover); text-decoration-color: var(--accent-hover); }
+
+    ul { margin: 0 0 1rem 1.4rem; }
+    li { margin-bottom: 0.6rem; }
+    code { font-family: var(--mono); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 4px; }
+
+    .refusal {
+      margin: 1.5rem 0 2rem;
+      padding: 1.1rem 1.35rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .canonical-note {
+      margin-top: 3rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .canonical-note strong { color: var(--text); }
+    .canonical-note a { text-decoration: underline; text-underline-offset: 2px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    footer .container { max-width: 960px; }
+    footer a { color: var(--text-muted); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+    footer a:hover { color: var(--accent-hover); }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.9rem; }
+      nav .links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<nav aria-label="Main navigation">
+  <div class="container">
+    <a href="/" class="logo" aria-label="AIDR home">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+        <path d="M7 3.5h15l5 5V28.5H7z" fill="#fffaf0"/>
+        <path d="M7 3.5h15l5 5V28.5H7z" stroke="#d99a2b" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M22 3.5v5h5" fill="#d99a2b"/>
+        <path d="M22 3.5v5h5" stroke="#d99a2b" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M9.5 23.5 16 17h3.2" stroke="#81968e" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="round"/>
+        <path d="M9.5 10.5 16 17h3.2" stroke="#e0a12f" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="round"/>
+        <path d="M8.5 17h10.7" stroke="#8b7f83" stroke-width="2.4" stroke-linecap="square"/>
+        <path d="M21.5 17c1.2-4.4 3-5 3-1.2 0 2.2 1.1 2.3 2.1.2" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>AIDR</span>
+    </a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="https://github.com/snapsynapse/aidr/blob/main/SPEC.md">Spec</a>
+      <a href="https://github.com/snapsynapse/aidr" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+  <article class="container">
+    <h1>Why not synthesis</h1>
+    <p class="lede">AIDR exists because of one design refusal: when multiple models disagree, we do not let a model resolve the disagreement.</p>
+    <p class="byline">By <a href="https://paice.work/" target="_blank" rel="noopener author">Sam Rogers</a> &middot; 2026-07-05 &middot; canonical markdown at <a href="https://github.com/snapsynapse/aidr/blob/main/WHY.md" target="_blank" rel="noopener">WHY.md</a></p>
+
+    <p>Every multi-model council product converges on the same final step. Gather answers in parallel, surface the differences, then synthesize: a chairman model, a verdict model, a summary that &ldquo;highlights agreement and disagreement.&rdquo; The synthesis reads as rigor. It is the opposite. The moment a model merges the positions, the disagreement stops being evidence and becomes an editorial choice made by whichever model held the pen, with all of its own priors and none of the accountability.</p>
+
+    <p class="refusal">AIDR keeps the disagreement.</p>
+
+    <h2>What synthesis destroys</h2>
+    <p>A synthesized answer destroys exactly the information a consequential decision needs most:</p>
+    <ul>
+      <li><strong>Who held which position before anyone saw anyone else's.</strong> Independence is the only defense against anchoring and correlated error. A synthesis cannot prove positions were independent; a record with positions filed before arbitration can.</li>
+      <li><strong>What the dissent actually said.</strong> Syntheses compress objections into &ldquo;some models noted concerns.&rdquo; The record preserves the objection verbatim, permanently. Objections are never deleted; records are superseded, not rewritten.</li>
+      <li><strong>Who decided, and by what right.</strong> A verdict emitted by a model is an answer with no owner. In an AIDR record the Arbitration section is human-authored by a named person, because accountability cannot be delegated to something that cannot be held accountable.</li>
+    </ul>
+    <p>Agreement itself proves less than it appears to. Models from the same family, or models that have seen each other's output, agree for reasons that have nothing to do with being right. That is why the <code>independent-positions</code> claim requires two or more distinct providers and positions recorded before arbitration, and why the linter checks it mechanically. Consensus is evidence to weigh, never an authority to obey.</p>
+
+    <h2>The two audit questions</h2>
+    <p>Execution tooling answers: what ran, and did the checks pass? That question matters and other tools answer it well. AIDR answers the question no execution log can: who proposed, who objected, and who decided? A system can prove every task passed and still have no way to prove the task was worth doing. The decision record is the missing half of the audit trail, and the two halves compose: a record can cite an execution log as evidence, and an execution pipeline can emit an open record for a human to arbitrate.</p>
+
+    <h2>What this costs</h2>
+    <p>Refusing synthesis has a price, and AIDR pays it knowingly:</p>
+    <ul>
+      <li>A human must actually read the positions and write the arbitration. There is no summary button. That is the point: the arbiter's attention is the accountability.</li>
+      <li>Records with real dissent are slower to close than a verdict. A decision worth recording is worth the latency.</li>
+      <li>The format cannot promise convergence. A unanimous record and a split record are equally valid outputs; only the human decides which way to go.</li>
+    </ul>
+    <p>If a decision does not merit that cost, it does not merit an AIDR record. Use a lighter tool. But when the decision is consequential enough that someone will later ask &ldquo;who decided this, and did anyone object,&rdquo; synthesis is the one step you cannot afford, because it answers that question with a shrug.</p>
+
+    <h2>See also</h2>
+    <ul>
+      <li><a href="https://github.com/snapsynapse/aidr/blob/main/SPEC.md">SPEC.md</a> for the format that enforces these commitments</li>
+      <li><a href="https://github.com/snapsynapse/aidr/blob/main/PRIOR_ART.md">PRIOR_ART.md</a> for the council products and where each one hands the verdict back to a model</li>
+      <li><a href="https://github.com/snapsynapse/aidr/blob/main/RECIPES.md">RECIPES.md</a> for producing independent positions mechanically</li>
+    </ul>
+
+    <div class="canonical-note">
+      <strong>Canonical reference:</strong> the authoritative version of this essay is <a href="https://github.com/snapsynapse/aidr/blob/main/WHY.md">WHY.md</a> in the AIDR repository. This page is its HTML representation at <a href="https://aidr.work/why.html">aidr.work/why.html</a>.
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <p>AIDR v0.1.0 &middot; <a href="https://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">CC BY 4.0</a> (spec) &middot; <a href="https://github.com/snapsynapse/aidr/blob/main/LICENSE" target="_blank" rel="noopener">Apache-2.0</a> (code) &middot; A <a href="https://paice.work/" target="_blank" rel="noopener">PAICE.work</a> project by <a href="https://linkedin.com/in/samrogers" target="_blank" rel="noopener author">Sam Rogers</a></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+bundle: aidr
+bundle_version: 1.0.0
+bundle_date: 2026-07-05
+description: >
+  Agent-agnostic skill teaching the AIDR (AI Decision Records) mechanics:
+  open a record from the template, record an independent position, file
+  an objection, assemble isolated position files into one record, check
+  lint status and earned claims, and request human arbitration. Never
+  authors an Arbitration section — that is a hard rule of the skill, not
+  a preference. Consumes only the AIDR template and the reference linter
+  and assemble tool shipped in this same repository; no new dependency.
+
+compatibility:
+  designed_for:
+    platform: Portable skill bundle (Claude Code, Codex, and other
+      skill-compatible agent harnesses)
+    surface: Code
+  tested_on:
+    - platform: Anthropic Claude
+      model: Claude Fable 5
+      surface: Claude Code
+      status: pass
+      date: 2026-07-05
+      skill_version: 1
+      notes: >
+        Exercised end to end against a real (non-synthetic) decision:
+        opened decisions/AIDR-0004-aidr-skill-distribution-home.md from
+        the template, recorded an independent position, requested
+        arbitration. Record lint-PASS with the human-arbitrated claim.
+    - platform: OpenAI Codex
+      surface: Code
+      status: not_yet_run
+      date: 2026-07-05
+      notes: >
+        Codex has read and referenced this skill file in coordination
+        (working-session/MAILBOX.md) but has not yet invoked it as its
+        own harness-run skill. No claim of a Codex-side pass is made
+        until that happens; the file is plain markdown with no
+        Claude-specific syntax, so no format barrier is expected.
+  spec_version: agentskills.io/1.0
+  frontmatter_mode: minimal
+
+deployments:
+  - path: .claude/skills/aidr
+    kind: symlink
+    target: ../../skills/aidr
+    scope: local, gitignored (per-machine Claude Code discovery)
+  - path: ~/Git/skills/aidr
+    kind: symlink
+    target: ../aidr/skills/aidr
+    scope: local, portfolio skills monorepo (points back into this repo,
+      per AIDR-0004; the monorepo's own git cannot ship a symlink that
+      points outside itself, so this deployment exists only on machines
+      where both repos are checked out side by side)
+
+files:
+  - path: SKILL.md
+    role: skill
+    version: 1
+    hash: "sha256:3643c96ee16b67798a05810863e2ca835111857c1339f2e1cf34e2a6f71413ea"
+    note: >
+      Initial version. Written 2026-07-05, same day as AIDR-0004 which
+      resolved this repo as the skill's canonical distribution home.
+      Minimal frontmatter (name + description only, no metadata block)
+      per frontmatter_mode: minimal, since the skill is designed to be
+      read directly by non-Claude harnesses (Codex, etc.) with no
+      Claude-specific parsing assumed.

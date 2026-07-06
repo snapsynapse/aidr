@@ -15,6 +15,7 @@ Multi-model tools increasingly show you where models disagree, then the disagree
 
 - [Spec](https://github.com/snapsynapse/aidr/blob/main/SPEC.md): The normative specification
 - [Template](https://github.com/snapsynapse/aidr/blob/main/templates/AIDR-0000-template.md): Copy-and-fill starting point
+- [Why not synthesis](https://github.com/snapsynapse/aidr/blob/main/WHY.md): The design refusal behind the format (HTML: https://aidr.work/why.html)
 - [Changelog](https://github.com/snapsynapse/aidr/blob/main/CHANGELOG.md): Version history
 - [Landing page](https://aidr.work/): Canonical homepage
 - [Assistant Guide](https://aidr.work/.well-known/assistant-guide.txt): bounded assistant install and operational instructions (GuideCheck Level 2)

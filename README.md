@@ -55,6 +55,8 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 | [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) | Copy-and-fill template (lints clean, shows all claims) |
 | [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](examples/AIDR-0001-spin-out-aidr-from-turnfile.md) | Real record: the decision to create this project, arbitrated 2026-07-02 (accepted as drafted) |
 | [decisions/AIDR-0002-ratify-spec-v0.1.0.md](decisions/AIDR-0002-ratify-spec-v0.1.0.md) | Real multi-model record: ratifying this spec, independent positions from Anthropic, OpenAI, and Google, arbitrated 2026-07-02 |
+| [RECIPES.md](RECIPES.md) | How to produce records mechanically: the runner-agnostic position sweep |
+| [WHY.md](WHY.md) | Why AIDR refuses model-synthesized verdicts |
 | [PRIOR_ART.md](PRIOR_ART.md) | Survey of adjacent work and the gap AIDR fills |
 | [INTENT.md](INTENT.md) | Where this project is going |
 | [CONFORMANCE.md](CONFORMANCE.md) | Claim definitions and current fixture coverage |
@@ -65,7 +67,9 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 | [SUPPORT.md](SUPPORT.md) | Where to ask questions or report issues |
 | [CITATION.cff](CITATION.cff) | Citation metadata |
 | [assistant-guide.txt](assistant-guide.txt) | Plain-text install guide for AI agents (GuideCheck Level 2) |
+| [skills/aidr/SKILL.md](skills/aidr/SKILL.md) | Agent-agnostic skill teaching the record mechanics; never authors arbitration |
 | [tools/aidr-lint.mjs](tools/aidr-lint.mjs) | Reference linter, zero dependencies |
+| [tools/aidr-assemble.mjs](tools/aidr-assemble.mjs) | Merges independent position files into one open record, zero dependencies |
 | [tests/](tests/) | Conformance suite: `node tests/run.mjs` pins the linter to SPEC.md (invalid + valid fixtures) |
 
 ## Verify
