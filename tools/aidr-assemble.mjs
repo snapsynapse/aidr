@@ -28,12 +28,40 @@
 
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { parseFrontmatter, parseMetaList, POSITION_KEYS, sectionBody, STANCES } from './lib/aidr-core.mjs';
 
-const STANCES = new Set(['recommend', 'oppose', 'alternative', 'abstain']);
-const POSITION_KEYS = ['agent', 'model', 'provider', 'stance', 'summary'];
 const USAGE =
   'usage: node tools/aidr-assemble.mjs --id AIDR-NNNN --title "..." --brief <brief.md> ' +
   '--positions <dir> --out <decisions-dir> [--date YYYY-MM-DD] [--arbiter <name>] [--force]';
+
+// True when a plain (unquoted) YAML scalar would not round-trip `value` as a
+// string under a real YAML parser -- e.g. a title of "null", "true", "2026",
+// or one starting with a YAML indicator character. Every shipped record's
+// title is unquoted (checked: all 5 as of 2026-07-05), so this only adds
+// quoting where the plain form would actually be ambiguous, rather than
+// changing the established style for the common case.
+function needsYamlQuoting(value) {
+  if (value === '') return true;
+  if (/^[\s]|[\s]$/.test(value)) return true;
+  if (/^[-?:,[\]{}#&*!|>'"%@`]/.test(value)) return true;
+  if (/: |:$| #/.test(value)) return true;
+  if (/^(null|Null|NULL|~|true|True|TRUE|false|False|FALSE)$/.test(value)) return true;
+  if (/^[+-]?(\.inf|\.Inf|\.INF|\.nan|\.NaN|\.NAN)$/.test(value)) return true;
+  if (/^[+-]?\d+$/.test(value)) return true;
+  if (/^[+-]?(\d+\.\d*|\.\d+)([eE][+-]?\d+)?$/.test(value)) return true;
+  if (/^\d{4}-\d{2}-\d{2}/.test(value)) return true;
+  return false;
+}
+
+// Quotes a free-text value for safe use as a YAML double-quoted scalar, so a
+// title or arbiter name that would otherwise be YAML-type-ambiguous (see
+// needsYamlQuoting) round-trips as a string under a real YAML parser rather
+// than this repo's own line-based parseFrontmatter. Not for `tags`, which
+// must stay an unquoted flow sequence (`[a, b]`) to keep its list semantics.
+function quoteYamlScalar(value) {
+  if (!needsYamlQuoting(value)) return value;
+  return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+}
 
 function usage(msg) {
   console.error(`aidr-assemble: ${msg}`);
@@ -44,36 +72,6 @@ function usage(msg) {
 function fail(msg) {
   console.error(`aidr-assemble: ${msg}`);
   process.exit(1);
-}
-
-// Helpers below mirror tools/aidr-lint.mjs so both tools read the format identically.
-function parseFrontmatter(text) {
-  const m = text.match(/^---\n([\s\S]*?)\n---\n/);
-  if (!m) return null;
-  const fm = {};
-  for (const line of m[1].split('\n')) {
-    const kv = line.match(/^([a-z_]+):\s*(.*)$/);
-    if (kv) fm[kv[1]] = kv[2].replace(/^["']|["']$/g, '').trim();
-  }
-  return fm;
-}
-
-function sectionBody(text, heading) {
-  const re = new RegExp(`^## ${heading}\\s*$`, 'm');
-  const m = re.exec(text);
-  if (!m) return null;
-  const rest = text.slice(m.index + m[0].length);
-  const next = rest.search(/^## /m);
-  return next === -1 ? rest : rest.slice(0, next);
-}
-
-function parseMetaList(block) {
-  const meta = {};
-  for (const line of block.split('\n')) {
-    const kv = line.match(/^- ([a-z_]+):\s*(.*)$/);
-    if (kv) meta[kv[1]] = kv[2].trim();
-  }
-  return meta;
 }
 
 function parseArgs(argv) {
@@ -175,7 +173,7 @@ if (existsSync(outPath) && !args.force) fail(`refusing to overwrite existing ${o
 const frontmatter = [
   '---',
   `id: ${args.id}`,
-  `title: ${args.title}`,
+  `title: ${quoteYamlScalar(args.title)}`,
   'status: open',
   `date: ${date}`,
   `arbiter: ${arbiter}`,

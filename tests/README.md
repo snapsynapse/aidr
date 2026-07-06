@@ -30,7 +30,7 @@ Exit 0 when every check passes, 1 otherwise. Zero dependencies (Node built-ins o
   dir (two providers, one embedded objection), and two malformed positions dirs. The
   suite writes assembled output to a throwaway temp dir, never to `decisions/`, and
   is also runnable standalone: `node tests/assemble.test.mjs`.
-- The suite also re-checks the three real records in the repo (`examples/`,
+- The suite also re-checks shipped records/templates in the repo (`examples/`,
   `templates/`, `decisions/`) as a regression guard.
 
 ## Adding a case

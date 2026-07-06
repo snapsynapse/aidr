@@ -43,7 +43,7 @@ const invalid = [
 ];
 
 // Each valid record MUST pass (exit 0) and earn exactly this claim set. Includes the
-// purpose-built fixture plus the three real records shipped in the repo (regression).
+// purpose-built fixture plus shipped records/templates in the repo (regression).
 const valid = [
   [join(validDir, 'AIDR-0100-valid-full.md'), ['independent-positions', 'dissent-preserved', 'human-arbitrated']],
   [join(repo, 'examples', 'AIDR-0001-spin-out-aidr-from-turnfile.md'), ['human-arbitrated']],
