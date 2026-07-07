@@ -1,7 +1,7 @@
 ---
 title: "AIDR INTENT"
-version: "0.1.10"
-last_updated: 2026-07-05
+version: "0.1.11"
+last_updated: 2026-07-06
 status: active
 description: "Component-level strategy for AIDR as the minimal single-artifact expression of Turnfile's governance concept, plus the delivery-surface roadmap built on it."
 tags: [intent, strategy, aidr, governance, decision-records]
@@ -62,6 +62,10 @@ Turnfile (https://turnfile.work/):
 - Conceptual lineage is by citation, not shared code or shared history. This repo stays dependency-free and small.
 - Turnfile's INTENT should record this relationship now that the Maintainer has arbitrated AIDR-0001 (2026-07-02); that edit goes through Turnfile's own governance.
 
+Aggregated Intelligence tenets (https://paice.foundation/papers/aggregated-intelligence-tenets.html):
+- The eight tenets, ratified as canon 2026-07-06, are the design principles beneath both AIDR and Turnfile: structured dissent, independence before influence, preserved disagreement, human-only arbitration, plain-text records, commons licensing, practice-earned rules.
+- Lineage is by citation only; the tenets impose no conformance requirement and name no required provider, consistent with tenet 7.
+
 Contribute-over-compete commitments (non-binding integrations, explicitly named):
 - AgDR (me2resh/agent-decision-record): interop and cross-linking proposed 2026-07-02 (issue #8); credit prominently. AIDR does not duplicate AgDR's single-agent use case.
 - ADR org: seek listing as a related format once stable.
@@ -106,6 +110,7 @@ Deviations from `0_Across/Repo Standards.md`, each with reason and status:
 
 ## Changelog
 
+- 2026-07-06 v0.1.11 - Relationships section gains the Aggregated Intelligence tenets (ratified canon 2026-07-06, canonical URL at paice.foundation/papers) as the cited design ground; lineage by citation, no conformance requirement.
 - 2026-07-05 v0.1.10 - Repo-polish gap-audit pass: renamed the skill bundle from `skill/aidr/` to canonical `skills/aidr/` (both local symlinks re-pointed, `make check` reverified 20/20); adopted Skill Provenance for the bundle (`MANIFEST.yaml`, `CHANGELOG.md`; no `PROJECT_CONTEXT.md`, since that is a consumer-side artifact); corrected the stale "handoffs/ tracked" exception to match the 2026-07-04 standing rule; resynced the assistant-guide.txt root/`.well-known` pair to byte-identical. No format or decision change.
 - 2026-07-05 v0.1.9 - Updated the roadmap's non-gated skill companion from a Claude-specific framing to the shared AIDR Skill resolved by AIDR-0004: canonical tracked home `skill/aidr/SKILL.md`, symlinked local installs, and one shared file consumed by Claude, Codex, and other agents rather than separate per-agent forks.
 - 2026-07-02 v0.1.8 - First release tagged and published: v0.1.0 (GitHub Release, https://github.com/snapsynapse/aidr/releases/tag/v0.1.0). Removed the now-resolved "no tagged release yet" entry from Exceptions to Repo Standards.
