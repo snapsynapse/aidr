@@ -49,6 +49,7 @@ const valid = [
   [join(repo, 'examples', 'AIDR-0001-spin-out-aidr-from-turnfile.md'), ['human-arbitrated']],
   [join(repo, 'templates', 'AIDR-0000-template.md'), ['independent-positions', 'dissent-preserved', 'human-arbitrated']],
   [join(repo, 'decisions', 'AIDR-0002-ratify-spec-v0.1.0.md'), ['independent-positions', 'human-arbitrated']],
+  [join(repo, 'decisions', 'AIDR-0003-ship-a-split-decision-recipe-for-ringer.md'), ['independent-positions', 'human-arbitrated']],
 ];
 
 const sameSet = (a, b) => a.length === b.length && [...a].sort().join() === [...b].sort().join();

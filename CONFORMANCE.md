@@ -24,6 +24,7 @@ The reference linter checks structural prerequisites for conformance and claim e
 | `templates/AIDR-0000-template.md` | template | `independent-positions`, `dissent-preserved`, `human-arbitrated` |
 | `examples/AIDR-0001-spin-out-aidr-from-turnfile.md` | arbitrated | `human-arbitrated` |
 | `decisions/AIDR-0002-ratify-spec-v0.1.0.md` | arbitrated | `independent-positions`, `human-arbitrated` |
+| `decisions/AIDR-0003-ship-a-split-decision-recipe-for-ringer.md` | arbitrated | `independent-positions`, `human-arbitrated` |
 | `decisions/AIDR-0004-aidr-skill-distribution-home.md` | arbitrated | `human-arbitrated` |
 
 `AIDR-0001` earns only `human-arbitrated`: it was arbitrated with a single position, so it correctly does not earn `independent-positions`, and no dissent was recorded, so it correctly does not earn `dissent-preserved`.
