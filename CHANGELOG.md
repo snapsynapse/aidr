@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+
+- `decisions/AIDR-0003`: the arbitrated Split Decision record, landed from its launch-gated branch now that Ringer is public. The record documents the decision that produced the position-sweep recipe: ship it as AIDR's first delivery surface, Ringer as the first worked example, never as an upstream Ringer feature. Both gate conditions (Ringer's public launch, maintainer signal) are met.
+
 ## [0.2.0] - 2026-07-05
 
 Repo release only: SPEC.md is unchanged and stays at spec v0.1.0 (no normative changes; spec version moves only by ratification record). This release ships the tooling, docs, and site work accumulated since launch.
