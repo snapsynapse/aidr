@@ -105,6 +105,35 @@ PASS decisions/AIDR-0004-your-decision-title.md [independent-positions, human-ar
 
 If any position opposed or offered an alternative, or an objection was filed, `dissent-preserved` lights too. The linter checks presence, not adequacy; whether the prose genuinely answers each objection stays a human responsibility.
 
+## Worked example: a Ringer swarm
+
+[Ringer](https://github.com/NateBJones-Projects/ringer) is a batch swarm orchestrator whose per-task `engine` field routes each task to a different provider CLI and whose isolated task directories keep workers from reading each other's output. That maps directly onto the sweep: one position task per provider, isolation by construction rather than convention.
+
+One position task per engine, each receiving the identical brief and format contract:
+
+```json
+{
+  "key": "position-anthropic",
+  "engine": "claude",
+  "spec": "Read brief.md and format-instructions.md (absolute paths). Write exactly one Position block to position.md in your task directory. Do not read any other participant's output.",
+  "check": "grep -q '^### Position: ' position.md",
+  "expect_files": ["position.md"]
+}
+```
+
+Duplicate the task per engine (`codex`, `opencode`, ...). Use absolute paths in the spec: each worker's cwd is its own task directory.
+
+Ringer tasks have no ordering, so assemble-and-lint cannot be a task that waits on the others. Run it as a second phase after the swarm exits: copy each taskdir's `position.md` up to `positions/<provider>.md` (the assemble tool reads flat files, it does not recurse), then
+
+```bash
+node tools/aidr-assemble.mjs --id AIDR-NNNN --title "..." --brief brief.md --positions positions/ --out decisions/
+node tools/aidr-lint.mjs decisions/AIDR-NNNN-*.md | grep -q 'PASS.*independent-positions'
+```
+
+or make the second phase a one-task Ringer manifest whose `check` is exactly that lint gate: exit code zero is then the swarm's own evidence that two or more distinct providers recorded positions before any arbitration existed.
+
+For the isolation statement the Evidence section should carry (see above): Ringer gives you isolated task directories and per-task engine routing mechanically, and its JSONL run log (`worker_engine`, `duration_ms`, `worker_tokens` per attempt) is linkable evidence of parallel independent generation. Whether two engines resolve to genuinely different models remains a declaration; Ringer's model-identity registry helps but does not prove it.
+
 ## Scope
 
 Session-scale governance (many decisions, turn coordination, ownership) is Turnfile, https://turnfile.work/. A recipe here is the one-decision case: positions in, one record out, a human decides.

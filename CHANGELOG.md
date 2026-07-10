@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- RECIPES.md: worked example running the position sweep as a Ringer swarm (one position task per engine, isolation by construction, two-phase assemble-and-lint because Ringer tasks have no ordering, the lint gate as a Ringer check)
 - `decisions/AIDR-0003`: the arbitrated Split Decision record, landed from its launch-gated branch now that Ringer is public. The record documents the decision that produced the position-sweep recipe: ship it as AIDR's first delivery surface, Ringer as the first worked example, never as an upstream Ringer feature. Both gate conditions (Ringer's public launch, maintainer signal) are met.
 
 ## [0.2.0] - 2026-07-05
