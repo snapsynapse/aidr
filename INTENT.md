@@ -1,7 +1,7 @@
 ---
 title: "AIDR INTENT"
-version: "0.1.11"
-last_updated: 2026-07-06
+version: "0.1.12"
+last_updated: 2026-07-21
 status: active
 description: "Component-level strategy for AIDR as the minimal single-artifact expression of Turnfile's governance concept, plus the delivery-surface roadmap built on it."
 tags: [intent, strategy, aidr, governance, decision-records]
@@ -91,13 +91,13 @@ AIDR-0004 resolved the distribution-home decision on 2026-07-05: the canonical h
 
 ## Open decisions (Maintainer)
 
-None currently open. All phase-1 gates are cleared; the next decisions are the phase-2 gate (format stable one release cycle, dogfooded in two PAICE repos) and launch timing for a worked-example companion to the RECIPES.md position sweep (gated on a third-party tool's public launch).
+None currently open. All phase-1 gates are cleared, and the Ringer worked example is public. The phase-2 stability condition is also cleared: v0.1.0 was followed by the v0.2.0 release without a normative format change. The remaining entry condition is dogfooding in two PAICE repos. Harnessie now provides substantial external evidence with eight arbitrated AIDR records, but Harnessie is a Snap Synapse project and does not satisfy the PAICE-repo gate as written. No AIDR records were found in PAICE repos during the 2026-07-21 audit, so the MCP server remains gated.
 
 Resolved: AgDR interop outreach opened 2026-07-02 as [me2resh/agent-decision-record#8](https://github.com/me2resh/agent-decision-record/issues/8) (cross-linking plus shared-frontmatter-key alignment; contribute-over-compete, no ask for AgDR to change its model). This was the last unmet phase-1 gate, so aidr graduated `incubating` -> `active` in `portfolio.yaml` the same day. SPEC.md v0.1.0 ratified 2026-07-02 via [AIDR-0002](decisions/AIDR-0002-ratify-spec-v0.1.0.md) (`status: draft` to `status: ratified`), the first multi-model record: independent positions from Anthropic (Claude), OpenAI (Codex), and Google (Gemini), all recommending, arbitrated by the Maintainer. This clears the phase-1 ratification gate in the delivery-surface roadmap. AIDR-0001 arbitrated 2026-07-02 (accepted as drafted). Name confirmed "AI Decision Records (AIDR)"; canonical URL https://aidr.work/ (purchased 2026-07-02). Repo `snapsynapse/aidr` created 2026-07-02 and flipped public 2026-07-02 (the "Prepare repo for public release" commit); the manifest note and this section reconciled to the public state the same day. aidr.work landing page went live 2026-07-02 (HTTPS enforced, DNS verified against all four expected IPs, assistant-guide.txt confirmed served byte-identical at the canonical `.well-known` path). Portfolio membership: aidr is a standalone `spec`-role component in `portfolio.yaml` (not a Turnfile surface — lineage is by citation, not shared code), admitted 2026-07-02 and graduated to active the same day.
 
 ## Execution
 
-The sequenced, task-level execution plan for all five surfaces lives at `handoffs/2026-07-01-five-surface-execution-plan.md`. It is written to be executable by any capable agent without this repo's founding conversation.
+The roadmap above is authoritative. Historical task-level plans in the private, gitignored `handoffs/` directory are retained as session provenance and must not be treated as current instructions. The current file-by-file disposition and phase-2 work packet live in [audits/handoff-relevance-2026-07-21.md](audits/handoff-relevance-2026-07-21.md).
 
 ## Exceptions to Repo Standards
 
@@ -110,6 +110,7 @@ Deviations from `0_Across/Repo Standards.md`, each with reason and status:
 
 ## Changelog
 
+- 2026-07-21 v0.1.12 - Reconciled execution state after the handoff audit: retired the launch-gated work packet, recorded the completed Ringer surface, marked format stability cleared, and documented that Harnessie's eight arbitrated records are strong external dogfood but do not satisfy the two-PAICE-repo phase-2 gate. Replaced the public reference to a gitignored handoff with the tracked audit.
 - 2026-07-06 v0.1.11 - Relationships section gains the Aggregated Intelligence tenets (ratified canon 2026-07-06, canonical URL at paice.foundation/papers) as the cited design ground; lineage by citation, no conformance requirement.
 - 2026-07-05 v0.1.10 - Repo-polish gap-audit pass: renamed the skill bundle from `skill/aidr/` to canonical `skills/aidr/` (both local symlinks re-pointed, `make check` reverified 20/20); adopted Skill Provenance for the bundle (`MANIFEST.yaml`, `CHANGELOG.md`; no `PROJECT_CONTEXT.md`, since that is a consumer-side artifact); corrected the stale "handoffs/ tracked" exception to match the 2026-07-04 standing rule; resynced the assistant-guide.txt root/`.well-known` pair to byte-identical. No format or decision change.
 - 2026-07-05 v0.1.9 - Updated the roadmap's non-gated skill companion from a Claude-specific framing to the shared AIDR Skill resolved by AIDR-0004: canonical tracked home `skill/aidr/SKILL.md`, symlinked local installs, and one shared file consumed by Claude, Codex, and other agents rather than separate per-agent forks.

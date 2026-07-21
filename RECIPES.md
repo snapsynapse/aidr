@@ -107,7 +107,7 @@ If any position opposed or offered an alternative, or an objection was filed, `d
 
 ## Worked example: a Ringer swarm
 
-[Ringer](https://github.com/NateBJones-Projects/ringer) is a batch swarm orchestrator whose per-task `engine` field routes each task to a different provider CLI and whose isolated task directories keep workers from reading each other's output. That maps directly onto the sweep: one position task per provider, isolation by construction rather than convention.
+[Ringer](https://github.com/NateBJones-Projects/ringer) is a batch swarm orchestrator whose per-task `engine` field routes each task to a different provider CLI and whose separate task directories keep participant outputs out of the ordinary context supplied to sibling workers. That maps directly onto the sweep: one position task per provider, separate scratch space by construction, and independence reinforced by the worker instruction. A task directory is not a filesystem read barrier; a worker that deliberately searches outside it may be able to read a sibling's output.
 
 One position task per engine, each receiving the identical brief and format contract:
 
@@ -132,7 +132,7 @@ node tools/aidr-lint.mjs decisions/AIDR-NNNN-*.md | grep -q 'PASS.*independent-p
 
 or make the second phase a one-task Ringer manifest whose `check` is exactly that lint gate: exit code zero is then the swarm's own evidence that two or more distinct providers recorded positions before any arbitration existed.
 
-For the isolation statement the Evidence section should carry (see above): Ringer gives you isolated task directories and per-task engine routing mechanically, and its JSONL run log (`worker_engine`, `duration_ms`, `worker_tokens` per attempt) is linkable evidence of parallel independent generation. Whether two engines resolve to genuinely different models remains a declaration; Ringer's model-identity registry helps but does not prove it.
+For the independence statement the Evidence section should carry (see above): Ringer gives you separate task directories and per-task engine routing mechanically, the task instructions prohibit reading other participants' output, and the run log is linkable evidence of parallel generation. This is behavioral isolation with auditable evidence, not an enforced read barrier. Whether two engines resolve to genuinely different models also remains a declaration; Ringer's model-identity registry helps but does not prove it.
 
 ## Scope
 

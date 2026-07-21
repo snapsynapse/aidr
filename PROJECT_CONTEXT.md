@@ -26,5 +26,5 @@ Formal, precise, spec-like in normative documents (SPEC.md uses RFC 2119 keyword
 - Spec v0.1.0 ratified (2026-07-02); repo release v0.2.0 (2026-07-05); unreleased changes accumulating in CHANGELOG.md.
 - All four decision records to date (AIDR-0001–0004) are arbitrated and closed; no open Maintainer decisions.
 - Portfolio status: graduated `incubating` -> `active` (2026-07-02) in the maintainer's portfolio manifest.
-- Companion Claude Skill (`skills/aidr/`) ships in-repo as the canonical distribution home (per AIDR-0004).
-- Next roadmap gate: phase 2 (MCP server) requires the format to be stable for one release cycle and dogfooded in at least two PAICE repos — not yet met.
+- Companion agent-agnostic AIDR Skill (`skills/aidr/`) ships in-repo as the canonical distribution home (per AIDR-0004).
+- The phase-2 format-stability condition is met. Harnessie carries eight arbitrated AIDR records, but it is a Snap Synapse project; no qualifying PAICE-repo records were found in the 2026-07-21 audit. The two-PAICE-repo dogfood condition remains unmet.

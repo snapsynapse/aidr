@@ -21,7 +21,8 @@ AIDR (AI Decision Records) is a single-file markdown format for recording conseq
 - `examples/` — worked examples not treated as this repo's own governance records (AIDR-0001).
 - `tools/aidr-lint.mjs`, `tools/aidr-assemble.mjs` — reference linter and position-file assembler, both zero-dependency; shared parser core in `tools/lib/aidr-core.mjs`.
 - `tests/` — conformance suite (`tests/run.mjs`, `tests/assemble.test.mjs`, `tests/fixtures/`) pinning the linter to `SPEC.md`.
-- `skills/aidr/` — canonical home for the agent-agnostic AIDR Claude Skill (SKILL.md, MANIFEST.yaml, CHANGELOG.md); teaches an agent to open a record, position, object, assemble, lint, and request arbitration — it never authors arbitration itself.
+- `skills/aidr/` - canonical home for the agent-agnostic AIDR Skill (SKILL.md, MANIFEST.yaml, CHANGELOG.md); teaches an agent to open a record, position, object, assemble, lint, and request arbitration. It never authors arbitration itself.
+- `audits/` - tracked current-state assessments. Use the latest handoff-relevance audit instead of private historical handoffs as an execution packet.
 - `docs/` — the aidr.work static site (landing page, `why.html`, `llms.txt`/`llms-full.txt`, `.well-known/assistant-guide.txt`).
 - `RECIPES.md` — runner-agnostic position-sweep recipe (fan a brief to N providers, assemble, lint-gate).
 - `INTENT.md` — roadmap, design rules, open decisions, exceptions to repo standards, changelog of intent itself.
@@ -47,9 +48,9 @@ node tests/run.mjs
 
 CI runs the same two steps on Node 20 for every PR and push to `main`.
 
-## Current state (as of 2026-07-12 assessment)
+## Current state (as of 2026-07-21 assessment)
 
-- Branch `main`, clean working tree, in sync with `origin/main` (0 ahead / 0 behind).
-- Last commit 2026-07-09; four decisions arbitrated (AIDR-0001–0004), all closed, no open Maintainer decisions in INTENT.md.
+- Four decisions are arbitrated (AIDR-0001 through AIDR-0004), all closed, with no open Maintainer decisions in INTENT.md.
 - Spec at v0.1.0 (ratified), repo release at v0.2.0 with unreleased changes queued in CHANGELOG.md (AIDR-0003 port, RECIPES.md Ringer-swarm worked example).
-- Health: actively maintained, docs and decision records unusually well cross-referenced and internally consistent.
+- Phase-2 stability is cleared. Harnessie carries eight arbitrated AIDR records, but no PAICE repo adoption was found, so the two-PAICE-repo dogfood gate remains unmet and MCP implementation must not start.
+- Health: `make check` passes 20/20 as of 2026-07-21.

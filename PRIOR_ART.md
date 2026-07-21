@@ -1,7 +1,7 @@
 ---
 title: "AIDR Prior Art Survey"
-version: "0.1.0"
-last_updated: 2026-07-01
+version: "0.1.1"
+last_updated: 2026-07-21
 description: "What already exists near AIDR, what each covers, and the gap AIDR fills."
 tags: [aidr, prior-art, research]
 ---
@@ -15,7 +15,7 @@ Surveyed 2026-07-01 (Perplexity sonar-pro plus direct repository verification). 
 |---|---|---|
 | [ADR](https://adr.github.io/) (Nygard) | The original architecture decision record practice | Direct ancestor; AIDR copies its adoption model (one template, no runtime) |
 | [MADR](https://adr.github.io/madr/) | ADR variant emphasizing options and pros/cons | Ancestor for the multi-option structure; no agents, no dissent, no arbitration fields |
-| [AgDR](https://github.com/me2resh/agent-decision-record) (me2resh) | ADR extension for decisions an AI coding agent makes mid-session; agent metadata, Y-statement, options table, Claude Code /decide skill. Active, 39 stars, updated 2026-06 | Closest prior art. Complementary: AgDR documents one agent's decision; AIDR records several agents' independent positions plus human arbitration. Interop outreach planned (see below) |
+| [AgDR](https://github.com/me2resh/agent-decision-record) (me2resh) | ADR extension for decisions an AI coding agent makes mid-session; agent metadata, Y-statement, options table, and a `/decide` skill | Closest prior art. Complementary: AgDR documents one agent's decision; AIDR records several agents' independent positions plus human arbitration. Interop outreach opened 2026-07-02 (see below) |
 | DRF (Decision Reasoning Format) | Machine-readable YAML/JSON decision reasoning format referenced by the ADR org | Candidate machine-readable companion; AIDR stays markdown-first |
 | IBIS, QOC, DRL, REMAP | Classical issue/argument/criteria structuring research | Conceptual ancestors for modeling positions and objections |
 
@@ -32,6 +32,14 @@ These prove demand for inter-model disagreement but none produces a portable gov
 | Council Mode (arXiv 2604.02923) | Research: heterogeneous parallel experts, synthesis enumerating consensus, disagreements, unique findings | Research architecture; AIDR is the artifact such systems could emit |
 | Replacing Judges with Juries (Cohere) and multiagent debate literature | Evaluation research using model panels | Aggregate judgment is the output; disagreement is internal |
 
+## Execution orchestrators
+
+Execution-layer tools mechanically verify what ran and whether checks passed. AIDR records who held positions, who dissented, and who decided. The two audit trails are complementary.
+
+| Project | What it is | Relationship to AIDR |
+|---|---|---|
+| [Ringer](https://github.com/NateBJones-Projects/ringer) | Parallel AI-agent swarm orchestrator. A manifest routes tasks to configurable engines, runs each worker in its own task directory, accepts only an executed check with exit code 0 as proof of success, retries a failure once with failure context, and records attempts in an evaluation log | Ringer can gather separate position files and mechanically run `aidr-assemble` plus `aidr-lint`; AIDR preserves the resulting positions and human arbitration. Ringer proves execution outcomes, while AIDR preserves decision authority and dissent. The worked integration is in [RECIPES.md](RECIPES.md#worked-example-a-ringer-swarm) |
+
 ## Code review tools
 
 CodeRabbit, Qodo/PR-Agent, Greptile, Ellipsis, and Copilot code review are single-model or single-provider per repo as of mid-2026. None runs heterogeneous model families on the same diff and surfaces inter-model disagreement as the product. That gap is the target of the planned AIDR GitHub Action (see the roadmap in INTENT.md).
@@ -44,6 +52,6 @@ CodeRabbit, Qodo/PR-Agent, Greptile, Ellipsis, and Copilot code review are singl
 
 ## Contribute-over-compete posture
 
-- AgDR: open an issue proposing interop, i.e. an AgDR record may link to an AIDR when a decision involved multiple independent agent positions, and the two templates keep compatible frontmatter keys. Credit AgDR in SPEC.md section 9 (done).
+- AgDR: interop issue [#8](https://github.com/me2resh/agent-decision-record/issues/8) opened 2026-07-02, proposing cross-links and compatible overlapping frontmatter keys. Credit in SPEC.md section 9 is complete.
 - ADR org (adr.github.io): once AIDR is stable, propose a listing alongside MADR and DRF as a related format.
 - FINOS AIR: map AIDR conformance claims (human-arbitrated, dissent-preserved) to AIR mitigation controls and propose AIDR as an evidence format.
