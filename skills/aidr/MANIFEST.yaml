@@ -57,7 +57,7 @@ files:
   - path: SKILL.md
     role: skill
     version: 1
-    hash: "sha256:3643c96ee16b67798a05810863e2ca835111857c1339f2e1cf34e2a6f71413ea"
+    hash: sha256:3643c96ee16b67798a05810863e2ca835111857c1339f2e1cf34e2a6f71413ea
     note: >
       Initial version. Written 2026-07-05, same day as AIDR-0004 which
       resolved this repo as the skill's canonical distribution home.
