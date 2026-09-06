@@ -20,10 +20,16 @@ https://aidr.work/
 
 ## Adopt in 60 seconds
 
+From a checkout containing the template and tools, choose an unused record ID and filename.
+Replace: AIDR-NNNN-slug.md -> your unused record filename, such as AIDR-0005-review-storage.md
+Customize
 ```bash
 mkdir -p decisions
-cp templates/AIDR-0000-template.md decisions/AIDR-0001-your-decision.md
-# in the new file, set the id: field to AIDR-0001 so it matches the filename
+cp -n templates/AIDR-0000-template.md decisions/AIDR-NNNN-slug.md
+```
+In the new copy, set `id` to match the filename prefix and fill in the title, date and human arbiter. For a new decision, set `status: open`, omit `decided`, and replace the template's sample positions, objections and arbitration with actual content. Leave Arbitration empty until the human decides. This instruction applies only to template placeholders; preserve all actual recorded positions and dissent. Add at least one real position before linting.
+Literal
+```bash
 node tools/aidr-lint.mjs decisions/
 ```
 
@@ -35,7 +41,7 @@ Multi-model tools (councils, juries, AI code review) increasingly show you where
 
 ## Quick start
 
-1. Copy [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) to `decisions/AIDR-0001-your-decision.md`, and set the `id` field in the new file to `AIDR-0001` so it matches the filename.
+1. Prepare a fresh open record using the template-copy steps above.
 2. Have each agent (ideally from different providers) write its position independently.
 3. Record objections. Never delete them.
 4. The human arbiter writes the Arbitration section, addressing every objection.
@@ -55,7 +61,7 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 | [templates/AIDR-0000-template.md](templates/AIDR-0000-template.md) | Copy-and-fill template (lints clean, shows all claims) |
 | [examples/AIDR-0001-spin-out-aidr-from-turnfile.md](examples/AIDR-0001-spin-out-aidr-from-turnfile.md) | Real record: the decision to create this project, arbitrated 2026-07-02 (accepted as drafted) |
 | [decisions/AIDR-0002-ratify-spec-v0.1.0.md](decisions/AIDR-0002-ratify-spec-v0.1.0.md) | Real multi-model record: ratifying this spec, independent positions from Anthropic, OpenAI, and Google, arbitrated 2026-07-02 |
-| [RECIPES.md](RECIPES.md) | How to produce records mechanically: the runner-agnostic position sweep |
+| [RECIPES.md](RECIPES.md) | How to produce records mechanically: the runner-agnostic position sweep and worked Ringer example |
 | [WHY.md](WHY.md) | Why AIDR refuses model-synthesized verdicts |
 | [PRIOR_ART.md](PRIOR_ART.md) | Survey of adjacent work and the gap AIDR fills |
 | [INTENT.md](INTENT.md) | Where this project is going |
@@ -74,6 +80,7 @@ A conforming record can carry three verifiable claims, checkable by anyone from 
 
 ## Verify
 
+Literal
 ```bash
 make check
 ```

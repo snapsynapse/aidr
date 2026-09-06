@@ -38,8 +38,9 @@ AIDR (AI Decision Records) is a single-file markdown format for recording conseq
 - Vendor neutrality: no field names a specific provider as required.
 - New decisions go in `decisions/`, numbered sequentially from the current highest (`AIDR-0004` is the latest as of this assessment).
 
-## Build / verify (from docs — not executed by this assessment)
+## Build / verify
 
+Literal
 ```bash
 make check          # = lint + test
 node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/
@@ -48,9 +49,9 @@ node tests/run.mjs
 
 CI runs the same two steps on Node 20 for every PR and push to `main`.
 
-## Current state (as of 2026-07-21 assessment)
+## Current state (as of 2026-09-05 assessment)
 
-- Four decisions are arbitrated (AIDR-0001 through AIDR-0004), all closed, with no open Maintainer decisions in INTENT.md.
-- Spec at v0.1.0 (ratified), repo release at v0.2.0 with unreleased changes queued in CHANGELOG.md (AIDR-0003 port, RECIPES.md Ringer-swarm worked example).
-- Phase-2 stability is cleared. Harnessie carries eight arbitrated AIDR records, but no PAICE repo adoption was found, so the two-PAICE-repo dogfood gate remains unmet and MCP implementation must not start.
-- Health: `make check` passes 20/20 as of 2026-07-21.
+- The release’s tracked governance inventory contains four arbitrated decisions (AIDR-0001 through AIDR-0004). Separate untracked cross-entity review material remains open and is excluded from this release. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
+- Spec remains v0.1.0 (ratified). Latest published repo release is v0.2.0; v0.2.1 is prepared locally, not published.
+- For adoption evidence and MCP entry conditions, read INTENT.md and audits/handoff-relevance-2026-09-05.md. For candidate validation and publication prerequisites, read audits/release-readiness-2026-09-05.md.
+- Health: make check passes 20/20 top-level checks, including 11/11 assembler checks, as of 2026-09-05.

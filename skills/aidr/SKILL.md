@@ -12,12 +12,13 @@ AIDR (https://aidr.work/) is a one-file markdown format for consequential decisi
 2. Dissent is never deleted. Never remove or rewrite a recorded position or objection. Records are superseded by new records, not edited.
 3. One decision, one file. No session state, task tracking, or transcripts in the record.
 4. A position claiming independence must be written before reading other positions. If you have read them, say so in the position prose.
-5. Validate after every write: `node tools/aidr-lint.mjs <file>` must PASS.
+5. Validate each populated record after every write. An empty scaffold is incomplete and cannot pass: SPEC.md requires at least one real position. Report that state honestly; never add a synthetic position to clear lint.
 
 ## File layout
 
 - Records live in `decisions/`, named `AIDR-NNNN-kebab-title.md`. `id` frontmatter must equal the filename's `AIDR-NNNN`.
 - Template: `templates/AIDR-0000-template.md` (in the aidr repo; copy it into target repos that lack one).
+- Run commands from a checkout of AIDR, using absolute target paths when the adopter lives elsewhere. A standalone skill install does not include the template or tools; locate a trusted AIDR checkout first.
 - Tools (zero-dependency, need only Node): `tools/aidr-lint.mjs`, `tools/aidr-assemble.mjs`.
 
 ## Operations
@@ -29,39 +30,56 @@ AIDR (https://aidr.work/) is a one-file markdown format for consequential decisi
 3. Set frontmatter: `id` (must match filename), `title`, `status: open`, `date` (today), `arbiter` (the human who will decide), `tags`. OMIT `decided` while open.
 4. Fill Context (under 200 words, links go in Evidence) and Question (one decidable question).
 5. Leave Positions/Objections with real content only as gathered; leave Arbitration as heading only, empty.
-6. Lint.
+6. Once at least one real position exists, lint and require PASS. Before then, report an incomplete scaffold awaiting its first position.
 
 ### Record a position
 
-Append under `## Positions`:
+Append under `## Positions`. Replace each value with the participant's actual metadata and prose.
+Replace: AGENT_LABEL -> participant label, identical in heading and agent field
+Replace: MODEL_ID -> reported model identifier
+Replace: PROVIDER -> model vendor or human
+Replace: STANCE -> recommend, oppose, alternative or abstain
+Replace: SUMMARY -> one-sentence position summary
+Replace: POSITION_PROSE -> participant-authored reasoning
+Customize
 ```markdown
-### Position: <agent-label>
+### Position: AGENT_LABEL
 
-- agent: <agent-label>
-- model: <model-id-as-reported>
-- provider: <vendor-name>
-- stance: recommend|oppose|alternative|abstain
-- summary: One sentence.
+- agent: AGENT_LABEL
+- model: MODEL_ID
+- provider: PROVIDER
+- stance: STANCE
+- summary: SUMMARY
 
-Prose argument.
+POSITION_PROSE
 ```
-Refuse if `status` is not `open`. Refuse a second position for the same agent label. Two positions from distinct providers earn the `independent-positions` claim.
+Refuse if `status` is not `open`. Refuse a second position for the same agent label. Two declared providers satisfy the provider-count prerequisite. Lint does not prove actual isolation or model identity; preserve process evidence.
 
 ### File an objection
 
-Append under `## Objections`:
+Append under `## Objections`.
+Replace: AGENT_LABEL -> objection author
+Replace: TARGET_LABEL -> position being challenged
+Replace: OBJECTION_PROSE -> concrete failure mode, contradiction or risk
+Customize
 ```markdown
-### Objection: <agent-label> to Position <target-label>
+### Objection: AGENT_LABEL to Position TARGET_LABEL
 
-Concrete failure mode, contradiction, or risk.
+OBJECTION_PROSE
 ```
 Generic preference belongs in the position, not an objection. Refuse if status is not open.
 
 ### Assemble from independent position files
 
-When positions were gathered in isolation (separate files, one per participant), merge mechanically instead of hand-editing:
+When positions were gathered in isolation, merge mechanically. The output directory must exist; the brief must name the human arbiter.
+Replace: AIDR-NNNN -> unused record ID
+Replace: DECISION_TITLE -> decision title
+Replace: BRIEF_PATH -> path to the brief
+Replace: POSITIONS_DIR -> directory containing flat participant .md files
+Replace: OUTPUT_DIR -> existing destination directory
+Customize
 ```bash
-node tools/aidr-assemble.mjs --id AIDR-NNNN --title "..." --brief brief.md --positions <dir> --out decisions/ [--date YYYY-MM-DD] [--arbiter <name>]
+node tools/aidr-assemble.mjs --id AIDR-NNNN --title "DECISION_TITLE" --brief "BRIEF_PATH" --positions "POSITIONS_DIR" --out "OUTPUT_DIR"
 ```
 Brief file: optional frontmatter (`arbiter`, `tags`) then `## Context` and `## Question`. Position files: one `### Position: <label>` block each, optional `### Objection:` blocks after. Emitted record is `status: open` and lint-clean.
 

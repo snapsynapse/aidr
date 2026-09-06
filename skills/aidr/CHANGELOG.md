@@ -1,16 +1,18 @@
 ---
 skill_bundle: aidr
-file_role: handoff
-version: 1
-version_date: 2026-07-05
-previous_version: null
-change_summary: >
-  Initial versioned release. Skill Provenance bootstrapped for a bundle
-  that already existed and had been dogfooded once (AIDR-0004) before
-  provenance tracking was added.
+file_role: reference
+version: 2
+version_date: 2026-09-05
+previous_version: 1
+change_summary: Clarifies scaffold validity, tool discovery and structural claim limits.
 ---
 
 # Changelog
+
+## v1.0.1 -- 2026-09-05
+
+- SKILL.md v2: distinguish empty scaffolds from conformant records; locate a trusted AIDR checkout when installed separately; preserve the distinction between structural checks and actual independence.
+- Historical platform tests below apply to their recorded skill versions; no new end-to-end adoption claim is made.
 
 ## v1.0.0 -- 2026-07-05
 

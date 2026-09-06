@@ -1,6 +1,6 @@
 # Conformance Report
 
-Report date: 2026-07-05
+Report date: 2026-09-05
 Spec version: `0.1.0` (ratified 2026-07-02, AIDR-0002)
 
 ## Claims
@@ -34,6 +34,7 @@ The reference linter checks structural prerequisites for conformance and claim e
 `AIDR-0004` earns only `human-arbitrated`: a second provider position was requested but that agent declared itself contaminated, and arbitration arrived first; the record honestly carries a single position, like `AIDR-0001`.
 
 ## Local Verification
+Literal
 ```bash
 node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/
 node tests/run.mjs
@@ -42,6 +43,6 @@ node tests/run.mjs
 The first command lints the shipped records. The second runs the conformance suite
 (`tests/README.md`), which pins the reference linter to SPEC.md: every invalid fixture
 must be rejected on its specific rule, and every valid record must earn exactly its
-claim set. Suite last run 2026-07-05: 19/19 checks passed.
+claim set. Suite last run 2026-09-05: 20/20 top-level checks passed, including 11/11 assembler checks.
 
 CI runs these same checks on pushes to `main` and on pull requests.

@@ -23,7 +23,11 @@ Steps
    cp templates/AIDR-0000-template.md decisions/AIDR-NNNN-slug.md
    Then set the id field in the new file to AIDR-NNNN so it
    matches the filename, and update the title, date, and arbiter
-   fields.
+   fields. Use an unused filename. In this fresh template copy, set
+   status to open, omit decided, and replace the sample positions and
+   objections with actual content. Leave Arbitration empty until the
+   human decides. Preserve all real positions and dissent; this reset
+   applies only to template placeholders.
 2. Fill in the Context and Question sections in your own words.
 3. Add one "### Position: <agent>" subsection per participating
    agent. Each position needs agent, model, provider, stance, and

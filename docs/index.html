@@ -32,7 +32,7 @@
   <meta property="og:image:alt" content="AIDR - AI Decision Records. Independent positions. Preserved dissent. Human arbitration.">
   <meta property="og:locale" content="en_US">
   <meta property="article:published_time" content="2026-07-01T00:00:00Z">
-  <meta property="article:modified_time" content="2026-07-02T00:00:00Z">
+  <meta property="article:modified_time" content="2026-09-05T00:00:00Z">
   <meta property="article:author" content="Sam Rogers">
   <meta property="article:publisher" content="https://paice.work/">
   <meta property="article:section" content="Open Patterns">
@@ -66,7 +66,7 @@
     "url": "https://aidr.work/",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://aidr.work/" },
     "datePublished": "2026-07-01",
-    "dateModified": "2026-07-05",
+    "dateModified": "2026-09-05",
     "author": {
       "@type": "Person",
       "name": "Sam Rogers",
@@ -465,9 +465,9 @@
       <span class="sep">&middot;</span>
       Published <time datetime="2026-07-01">July 1, 2026</time>
       <span class="sep">&middot;</span>
-      Updated <time datetime="2026-07-05">July 5, 2026</time>
+      Updated <time datetime="2026-09-05">September 5, 2026</time>
       <span class="sep">&middot;</span>
-      <span class="version">v0.2.0</span>
+      <span class="version">v0.2.1</span>
       <span class="sep">&middot;</span>
       <a href="https://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">CC&nbsp;BY&nbsp;4.0</a>
     </p>
@@ -522,6 +522,8 @@
       </tbody>
     </table>
 
+    <p>The linter checks structural prerequisites and declared providers. Actual independence, identity and the adequacy of arbitration require review of the record and supporting evidence.</p>
+
     <h3 style="margin-top: 2rem;">Record anatomy</h3>
     <table>
       <thead>
@@ -547,8 +549,11 @@
     <div class="code-grid">
       <div class="code-block">
         <h3>1. Copy the template</h3>
-<pre>cp templates/AIDR-0000-template.md \
-  decisions/AIDR-0001-your-decision.md</pre>
+<p>Replace: AIDR-NNNN-slug.md &rarr; an unused record filename.</p>
+<p>Customize</p>
+<pre>cp -n templates/AIDR-0000-template.md \
+  decisions/AIDR-NNNN-slug.md</pre>
+        <p class="annotation">Set the id to match the filename prefix. Fill in title, date and human arbiter; start with status open and omit decided. Replace template placeholders with real positions and objections, leaving Arbitration empty until the human decides. Preserve all actual recorded dissent.</p>
       </div>
 
       <div class="code-block">
@@ -563,7 +568,7 @@
 
       <div class="code-block">
         <h3>3. Arbitrate</h3>
-<pre>### Arbitration
+<pre>## Arbitration
 - decided_by: sam
 - date: 2026-07-02
 - decision: one sentence
@@ -587,11 +592,11 @@ node tools/aidr-lint.mjs decisions/</pre>
     <p>AIDR re-expresses Turnfile's core concept, independent agent positions, preserved dissent, human arbitration, at the smallest possible unit of adoption: one markdown template. A team that outgrows single-decision records graduates to a full <a href="https://turnfile.work/" target="_blank" rel="noopener">Turnfile</a> session. Conceptual lineage is by citation, not shared code or shared history; this repo stays dependency-free and small.</p>
 
     <aside class="canonical-note" role="note">
-      <strong>Canonical reference.</strong> This page is the authoritative
-      definition of AI Decision Records (AIDR). Cross-posts on other
-      platforms are derived from this source and should cite
+      <strong>Canonical reference.</strong> This page is the canonical overview of AI Decision Records (AIDR).
+      <a href="https://github.com/snapsynapse/aidr/blob/main/SPEC.md">SPEC.md</a>
+      defines normative conformance. Cross-posts should cite
       <a href="https://aidr.work/">aidr.work</a> as canonical.
-      Last substantive revision: <time datetime="2026-07-02">2026-07-02</time>.
+      Specification ratified: <time datetime="2026-07-02">2026-07-02</time>.
       <a href="https://github.com/snapsynapse/aidr/commits/main/SPEC.md" target="_blank" rel="noopener">Revision history &rarr;</a>
     </aside>
   </div>
@@ -602,7 +607,7 @@ node tools/aidr-lint.mjs decisions/</pre>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-meta">
-        <p>AIDR v0.2.0 &middot; spec v0.1.0 &middot; <a href="https://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">CC BY 4.0</a> (spec) &middot; <a href="https://github.com/snapsynapse/aidr/blob/main/LICENSE" target="_blank" rel="noopener">Apache-2.0</a> (code)</p>
+        <p>AIDR v0.2.1 &middot; spec v0.1.0 &middot; <a href="https://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">CC BY 4.0</a> (spec) &middot; <a href="https://github.com/snapsynapse/aidr/blob/main/LICENSE" target="_blank" rel="noopener">Apache-2.0</a> (code)</p>
         <p>A <a href="https://paice.work/" target="_blank" rel="noopener">PAICE.work</a> project by <a href="https://linkedin.com/in/samrogers" target="_blank" rel="noopener author">Sam Rogers</a>, distilled from the <a href="https://turnfile.work/" target="_blank" rel="noopener">Turnfile</a> protocol.</p>
         <p style="margin-top: 0.5rem;">See also: <a href="https://turnfile.work/" target="_blank" rel="noopener">Turnfile</a> &middot; <a href="https://gracefulboundaries.dev/" target="_blank" rel="noopener">Graceful Boundaries</a> &middot; <a href="https://skillprovenance.dev/" target="_blank" rel="noopener">Skill Provenance</a></p>
         <p>Agent install guide: <a href="/.well-known/assistant-guide.txt">assistant-guide.txt</a> (<a href="https://guidecheck.org/" target="_blank" rel="noopener">GuideCheck</a> Level 2)</p>

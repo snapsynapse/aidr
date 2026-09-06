@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "repository": "https://github.com/snapsynapse/aidr",
+  "profile": "open-spec",
+  "authority": "R2 (local commit only; no push, tag or publication)",
+  "start_head": "6cfcc807cfbb67e193972070b5d6dd23ca4b8e72",
+  "candidate_head": null,
+  "candidate_version": "0.2.1",
+  "updated_at": "2026-09-05T23:59:10.860564+00:00",
+  "steps": [
+    {
+      "id": "candidate-content",
+      "status": "completed",
+      "evidence": "Staged file hashes and source archive membership recorded in dist/v0.2.1/BUILDINFO.json; use the archive SHA256SUMS to identify candidate bytes."
+    },
+    {
+      "id": "local-verification",
+      "status": "completed",
+      "evidence": "make check 20/20 including assembler 11/11; clean-directory open-record smoke; guide parity; skill hash; documentation links; JSON-LD and sitemap parse. Full consistency follow-up: 54 local links pass; SKILL.md v2 validates; bundle v1.0.1 hashes match. Skill scaffold boundary and fail-closed recipe gate smoke tests pass; synthetic tests, not adoption."
+    },
+    {
+      "id": "remote-baseline",
+      "status": "completed",
+      "evidence": "GitHub main matches start_head; latest release v0.2.0; proposed v0.2.1 tag absent at verification."
+    },
+    {
+      "id": "accessibility",
+      "status": "completed",
+      "evidence": "All three HTML pages, six desktop/mobile Comet scans with axe-core 4.12.1: zero violations or document overflow. See accessibility-2026-09-05.md."
+    },
+    {
+      "id": "publication-authority",
+      "status": "blocked",
+      "evidence": "Sam authorized staging and local commit. Push, tag and publication remain unauthorized; Sam wants arbitration before pushing."
+    },
+    {
+      "id": "candidate-ci",
+      "status": "not_started",
+      "evidence": "Hosted CI not run; this local-only commit will be identified in the local delivery receipt."
+    },
+    {
+      "id": "publication",
+      "status": "not_started",
+      "evidence": "No push, tag or release performed. Local commit is separately authorized."
+    },
+    {
+      "id": "deployment-verification",
+      "status": "not_started",
+      "evidence": "Live baseline routes return 200 and live guide matches start_head; unpublished candidate is not deployed."
+    },
+    {
+      "id": "packaging",
+      "status": "completed",
+      "evidence": "Local source ZIP and skill package built from staged bytes. Extracted source make check and extracted skill validation pass; ZIP integrity and membership verified. dist/v0.2.1/BUILDINFO.json and SHA256SUMS identify the candidate. Rebuild from the final tag before publication."
+    }
+  ]
+}

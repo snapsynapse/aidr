@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-AIDR is pre-1.0. Security-relevant fixes are made against the most recent draft on `main`.
+AIDR is pre-1.0. Security-relevant fixes are made against the current maintained code on `main`; the specification is ratified at v0.1.0.
 
 ## Reporting a Vulnerability
 

@@ -2,6 +2,9 @@
 
 > One-file AI decision records with human arbitration
 
+Updated: 2026-09-05
+Repository release candidate: 0.2.1 (specification remains 0.1.0)
+
 Multi-model tools increasingly show you where models disagree, then the disagreement evaporates into a chat answer. Execution logs tell you what ran. Neither answers who objected before we acted, and who decided. AIDR makes that answer a plain file in your repo.
 
 ## Concepts
@@ -19,6 +22,9 @@ Multi-model tools increasingly show you where models disagree, then the disagree
 - [Changelog](https://github.com/snapsynapse/aidr/blob/main/CHANGELOG.md): Version history
 - [Landing page](https://aidr.work/): Canonical homepage
 - [Assistant Guide](https://aidr.work/.well-known/assistant-guide.txt): bounded assistant install and operational instructions (GuideCheck Level 2)
+
+- [Position sweep and Ringer example](https://github.com/snapsynapse/aidr/blob/main/RECIPES.md): gather positions, assemble an open record, then request human arbitration
+- [Agent skill](https://github.com/snapsynapse/aidr/blob/main/skills/aidr/SKILL.md): portable record mechanics
 
 ## Links
 

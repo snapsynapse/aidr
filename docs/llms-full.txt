@@ -7,7 +7,8 @@
 
 Canonical: https://aidr.work/
 Repository: https://github.com/snapsynapse/aidr
-Updated: 2026-07-05
+Updated: 2026-09-05
+Repository release candidate: 0.2.1 (specification remains 0.1.0)
 
 ## What AIDR is
 
@@ -66,17 +67,25 @@ is superseded), `tags`.
   metadata list (`agent`, `model`, `provider`, `stance` of recommend/oppose/
   alternative/abstain, `summary`) then prose. A record claiming independent
   multi-model review MUST contain at least two positions whose `provider` differ.
-- Objections (required content when dissent exists): one `### Objection:` per
+- Objections (optional section, required content when dissent exists): one `### Objection:` per
   objection, naming a concrete failure mode; never removed once recorded.
 - Arbitration (required when arbitrated or superseded): authored by the human
   `arbiter`, with `decided_by`, `date`, `decision`, and prose that addresses
   every recorded objection (accepted, rejected with reason, or deferred).
+- Evidence (optional): links to supporting material and what each link establishes.
 
 ## Adopt in 60 seconds
 
+From a checkout containing the template and tools, choose an unused record ID and filename.
+Replace: AIDR-NNNN-slug.md -> your unused record filename, such as AIDR-0005-review-storage.md
+Customize
 ```bash
 mkdir -p decisions
-cp templates/AIDR-0000-template.md decisions/AIDR-0001-your-decision.md
+cp -n templates/AIDR-0000-template.md decisions/AIDR-NNNN-slug.md
+```
+In the new copy, set `id` to match the filename prefix and fill in the title, date and human arbiter. For a new decision, set `status: open`, omit `decided`, and replace the template's sample positions, objections and arbitration with actual content. Leave Arbitration empty until the human decides. This instruction applies only to template placeholders; preserve all actual recorded positions and dissent. Add at least one real position before linting.
+Literal
+```bash
 node tools/aidr-lint.mjs decisions/
 ```
 
@@ -88,7 +97,10 @@ The linter is optional, uses only Node.js built-ins, and is tested on Node 20.
   providers, each answering in isolation; merge with `tools/aidr-assemble.mjs`
   (zero dependencies) into one open record; `aidr-lint` verifies the result and
   the `independent-positions` claim. Runner-agnostic: any way of invoking N
-  models works.
+  models works. RECIPES.md includes a worked Ringer swarm example. Separate
+  task directories are scratch separation, not an enforced read barrier.
+  The linter checks declared providers and record structure; actual isolation
+  and model identity need independently reviewed evidence.
 - Agent skill (skills/aidr/SKILL.md): agent-agnostic instructions teaching an
   agent to open a record, record a position, file an objection, assemble, check
   claims, and request arbitration. An agent MUST NOT author the Arbitration
@@ -118,7 +130,8 @@ fixtures). Conformance verifies form, not the quality of a decision.
 - AgDR (https://github.com/me2resh/agent-decision-record): documents one AI
   coding agent's decision mid-session. Complementary — AIDR records several
   agents' independent positions plus required human arbitration. Interop
-  proposed (cross-linking + shared frontmatter keys).
+  proposed in issue #8 (cross-linking + shared frontmatter keys):
+  https://github.com/me2resh/agent-decision-record/issues/8
 - ADR / MADR: direct ancestors; AIDR copies the one-template, no-runtime
   adoption model and adds positions, preserved dissent, and human arbitration.
 

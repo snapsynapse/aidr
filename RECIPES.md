@@ -64,6 +64,11 @@ A participant that fails mid-sweep is not fatal: drop it and continue. Two survi
 
 ### Assemble and lint
 
+This example assumes the layout above and an arbiter in the brief. Choose an unused ID.
+Replace: AIDR-0004 -> your unused record ID
+Replace: Your decision title -> your decision title
+Replace: AIDR-0004-your-decision-title.md -> the filename derived from that ID and title
+Customize
 ```bash
 node tools/aidr-assemble.mjs \
   --id AIDR-0004 \
@@ -85,17 +90,19 @@ The assemble step enforces the format contract: all five metadata keys, heading 
 PASS decisions/AIDR-0004-your-decision-title.md [independent-positions]
 ```
 
-To gate a pipeline on the claim rather than bare conformance:
-
+To gate a pipeline on the claim rather than bare conformance, preserve the linter exit status and target exactly one record.
+Replace: AIDR-0004-your-decision-title.md -> the exact output filename
+Customize
 ```bash
-node tools/aidr-lint.mjs decisions/AIDR-0004-your-decision-title.md | grep -q 'PASS.*independent-positions'
+aidr_result=$(node tools/aidr-lint.mjs decisions/AIDR-0004-your-decision-title.md) &&
+printf '%s\n' "$aidr_result" | grep -q 'PASS.*independent-positions'
 ```
 
 An `### Objection: <label> to <reference>` heading after a participant's Position block is lifted into the record's Objections section in filename order; inline-prose objections stay inside the position. The bundled contract above asks for inline prose; switch both together if you want heading-style routing.
 
 ### Arbitration
 
-The record leaves the sweep with `status: open` and an empty Arbitration section. That is correct and required: the linter rejects an open record with completed arbitration, which is how the sweep proves no arbitration happened before or during position gathering.
+The record leaves the sweep with `status: open` and an empty Arbitration section. That is correct and required: the linter rejects an open record with completed arbitration, which verifies that the emitted record contains no completed arbitration. It cannot prove what happened outside the record.
 
 A human then arbitrates: fills the Arbitration metadata (`decided_by`, `date`, `decision`) with prose addressing every objection, flips `status` to `arbitrated`, and adds the `decided:` frontmatter field. On re-lint:
 
@@ -123,14 +130,18 @@ One position task per engine, each receiving the identical brief and format cont
 
 Duplicate the task per engine (`codex`, `opencode`, ...). Use absolute paths in the spec: each worker's cwd is its own task directory.
 
-Ringer tasks have no ordering, so assemble-and-lint cannot be a task that waits on the others. Run it as a second phase after the swarm exits: copy each taskdir's `position.md` up to `positions/<provider>.md` (the assemble tool reads flat files, it does not recurse), then
-
+Ringer tasks have no ordering, so assemble-and-lint cannot be a task that waits on the others. Run it as a second phase after the swarm exits: copy each taskdir's `position.md` up to `positions/<provider>.md` (the assemble tool reads flat files, it does not recurse), then use the two-phase commands below. The brief must name the human arbiter.
+Replace: AIDR-NNNN -> your unused record ID
+Replace: ... -> your decision title
+Replace: RECORD_FILENAME -> the exact emitted filename, including .md
+Customize
 ```bash
 node tools/aidr-assemble.mjs --id AIDR-NNNN --title "..." --brief brief.md --positions positions/ --out decisions/
-node tools/aidr-lint.mjs decisions/AIDR-NNNN-*.md | grep -q 'PASS.*independent-positions'
+aidr_result=$(node tools/aidr-lint.mjs decisions/RECORD_FILENAME) &&
+printf '%s\n' "$aidr_result" | grep -q 'PASS.*independent-positions'
 ```
 
-or make the second phase a one-task Ringer manifest whose `check` is exactly that lint gate: exit code zero is then the swarm's own evidence that two or more distinct providers recorded positions before any arbitration existed.
+or make the second phase a one-task Ringer manifest whose `check` is exactly that lint gate: exit code zero verifies a lint-passing record with the declared independent-positions claim; the run evidence must establish the actual preparation process.
 
 For the independence statement the Evidence section should carry (see above): Ringer gives you separate task directories and per-task engine routing mechanically, the task instructions prohibit reading other participants' output, and the run log is linkable evidence of parallel generation. This is behavioral isolation with auditable evidence, not an enforced read barrier. Whether two engines resolve to genuinely different models also remains a declaration; Ringer's model-identity registry helps but does not prove it.
 

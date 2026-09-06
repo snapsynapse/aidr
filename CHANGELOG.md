@@ -5,15 +5,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+## [0.2.1] - 2026-09-05
+
+Prepared locally; not yet published. Repository documentation and conformance-coverage release only. SPEC.md remains v0.1.0; the template and runtime tools are unchanged.
+
 ### Added
+
+- Current handoff reconciliation and deferred delivery-surface design backlog; processed private repo handoffs removed after durable migration
 
 - `audits/handoff-relevance-2026-07-21.md`: file-by-file disposition of both private handoffs, current phase-2 gate evidence, and a bounded next work packet
 - `PRIOR_ART.md`: the launch-gated Ringer execution-orchestrator entry, refreshed against the public project and linked to the shipped worked recipe
 - Conformance regression coverage for AIDR-0003 (tests/run.mjs fixture + CONFORMANCE.md row), ported from the retired split-decision branch
-- RECIPES.md: worked example running the position sweep as a Ringer swarm (one position task per engine, isolation by construction, two-phase assemble-and-lint because Ringer tasks have no ordering, the lint gate as a Ringer check)
+- RECIPES.md: worked example running the position sweep as a Ringer swarm (one position task per engine, separate scratch directories with behavioral isolation, two-phase assemble-and-lint because Ringer tasks have no ordering, the lint gate as a Ringer check)
 - `decisions/AIDR-0003`: the arbitrated Split Decision record, landed from its launch-gated branch now that Ringer is public. The record documents the decision that produced the position-sweep recipe: ship it as AIDR's first delivery surface, Ringer as the first worked example, never as an upstream Ringer feature. Both gate conditions (Ringer's public launch, maintainer signal) are met.
 
 ### Changed
+
+- Cross-surface consistency pass: rationale and website distinguish evidence from proof of isolation; contribution guidance recognizes verbatim assembly; recipe gates preserve lint failures
+- AIDR skill bundle v1.0.1 (SKILL.md v2): scaffold validity, external tool discovery and claim limits corrected; manifest hashes refreshed
+
+- Quickstart instructions now align across README and machine-readable documentation, set matching record IDs, and explain replacing template placeholders before recording a real open decision
+- Landing-page Arbitration example corrected to the required level-two heading; template-copy guidance aligned with README
+- Conformance report refreshed to the verified 20/20 top-level checks, including 11/11 assembler checks
+- Candidate version and dates propagated to the landing page, citation, sitemap and discovery files; stale agent guidance refreshed
 
 - `INTENT.md`, `CLAUDE.md`, and `PROJECT_CONTEXT.md`: retired stale handoff instructions and reconciled the phase-2 gate to current evidence; release-cycle stability is cleared, Harnessie provides strong external dogfood, and the required two PAICE repos remain outstanding
 - `PRIOR_ART.md`: AgDR interop wording now records the issue opened on 2026-07-02 instead of describing outreach as planned

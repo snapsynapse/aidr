@@ -1,6 +1,6 @@
 bundle: aidr
-bundle_version: 1.0.0
-bundle_date: 2026-07-05
+bundle_version: 1.0.1
+bundle_date: 2026-09-05
 description: >
   Agent-agnostic skill teaching the AIDR (AI Decision Records) mechanics:
   open a record from the template, record an independent position, file
@@ -56,12 +56,12 @@ deployments:
 files:
   - path: SKILL.md
     role: skill
-    version: 1
-    hash: sha256:3643c96ee16b67798a05810863e2ca835111857c1339f2e1cf34e2a6f71413ea
+    version: 2
+    hash: sha256:42aa59788c249f294983ea6ab0497af252a7d1d62e6b9373f2ffbf10316c8995
     note: >
-      Initial version. Written 2026-07-05, same day as AIDR-0004 which
-      resolved this repo as the skill's canonical distribution home.
-      Minimal frontmatter (name + description only, no metadata block)
-      per frontmatter_mode: minimal, since the skill is designed to be
-      read directly by non-Claude harnesses (Codex, etc.) with no
-      Claude-specific parsing assumed.
+      Version 2 clarifies incomplete scaffolds, external checkout discovery,
+      and structural claim limits. Minimal portable frontmatter retained.
+  - path: CHANGELOG.md
+    role: reference
+    version: 2
+    hash: sha256:69704e78d83a6bed32c28974a1c86c9b9b6470f1822f39e36c0397ffebaf82ad
