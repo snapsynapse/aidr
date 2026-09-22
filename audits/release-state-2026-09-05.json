@@ -2,11 +2,11 @@
   "schema_version": "1.0",
   "repository": "https://github.com/snapsynapse/aidr",
   "profile": "open-spec",
-  "authority": "R2 (local commit only; no push, tag or publication)",
+  "authority": "R3 (commit and push to main authorized; no tag or GitHub Release)",
   "start_head": "6cfcc807cfbb67e193972070b5d6dd23ca4b8e72",
-  "candidate_head": null,
+  "candidate_head": "a67c41d339d3e70bc3baaf07e652f9cf9d13a5bb",
   "candidate_version": "0.2.1",
-  "updated_at": "2026-09-05T23:59:10.860564+00:00",
+  "updated_at": "2026-09-22T20:30:00+00:00",
   "steps": [
     {
       "id": "candidate-content",
@@ -16,7 +16,7 @@
     {
       "id": "local-verification",
       "status": "completed",
-      "evidence": "make check 20/20 including assembler 11/11; clean-directory open-record smoke; guide parity; skill hash; documentation links; JSON-LD and sitemap parse. Full consistency follow-up: 54 local links pass; SKILL.md v2 validates; bundle v1.0.1 hashes match. Skill scaffold boundary and fail-closed recipe gate smoke tests pass; synthetic tests, not adoption."
+      "evidence": "make check 20/20 including assembler 11/11 as of 2026-09-05; 25/25 including assembler 11/11 as of 2026-09-22 after strict-mode checks were added; clean-directory open-record smoke; guide parity; skill hash; documentation links; JSON-LD and sitemap parse. Full consistency follow-up: 54 local links pass; SKILL.md v2 validates; bundle v1.0.1 hashes match. Skill scaffold boundary and fail-closed recipe gate smoke tests pass; synthetic tests, not adoption."
     },
     {
       "id": "remote-baseline",
@@ -30,28 +30,29 @@
     },
     {
       "id": "publication-authority",
-      "status": "blocked",
-      "evidence": "Sam authorized staging and local commit. Push, tag and publication remain unauthorized; Sam wants arbitration before pushing."
+      "status": "completed",
+      "evidence": "Sam authorized staging, local commit, and subsequently the push to main. Tag and GitHub Release were not authorized and were not created."
     },
     {
       "id": "candidate-ci",
-      "status": "not_started",
-      "evidence": "Hosted CI not run; this local-only commit will be identified in the local delivery receipt."
+      "status": "completed",
+      "evidence": "GitHub Actions run 'CI' concluded success at head_sha a67c41d339d3e70bc3baaf07e652f9cf9d13a5bb; 'pages build and deployment' also concluded success. Verified 2026-09-22 via the Actions API."
     },
     {
       "id": "publication",
-      "status": "not_started",
-      "evidence": "No push, tag or release performed. Local commit is separately authorized."
+      "status": "partial",
+      "evidence": "Commit a67c41d was pushed to origin/main and is the deployed Pages source. No v0.2.1 tag and no GitHub Release exist; remote tags are v0.1.0 and v0.2.0 only. Verified 2026-09-22 via git ls-remote and the releases API."
     },
     {
       "id": "deployment-verification",
-      "status": "not_started",
-      "evidence": "Live baseline routes return 200 and live guide matches start_head; unpublished candidate is not deployed."
+      "status": "completed",
+      "evidence": "https://aidr.work/ served bytes byte-identical to docs/index.html at a67c41d, verified 2026-09-22. Subsequent commit 51b5430 (landing-page version wording and Quick start acquisition step) is also live and verified."
     },
     {
       "id": "packaging",
       "status": "completed",
       "evidence": "Local source ZIP and skill package built from staged bytes. Extracted source make check and extracted skill validation pass; ZIP integrity and membership verified. dist/v0.2.1/BUILDINFO.json and SHA256SUMS identify the candidate. Rebuild from the final tag before publication."
     }
-  ]
+  ],
+  "correction_note": "Corrected 2026-09-22. The 2026-09-05 snapshot was written before Sam authorized the push and was never updated afterwards, so it recorded candidate_head as null and publication as blocked while the candidate was in fact committed and pushed. Steps below now reflect verified git and GitHub state. Tag and GitHub Release remain genuinely unperformed."
 }

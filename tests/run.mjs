@@ -15,9 +15,9 @@ const linter = join(repo, 'tools', 'aidr-lint.mjs');
 const invalidDir = join(here, 'fixtures', 'invalid');
 const validDir = join(here, 'fixtures', 'valid');
 
-function lint(path) {
+function lint(path, ...flags) {
   try {
-    return { code: 0, out: execFileSync('node', [linter, path], { encoding: 'utf8' }) };
+    return { code: 0, out: execFileSync('node', [linter, ...flags, path], { encoding: 'utf8' }) };
   } catch (e) {
     return { code: e.status ?? 1, out: (e.stdout ?? '').toString() };
   }
@@ -89,8 +89,42 @@ for (const [path, claims] of valid) {
   console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${rel}  -> expected [${claims.join(', ')}], got [${got.join(', ')}]`);
 }
 
+// --strict is opt-in and must not change what conformance means. It fails a record that
+// still carries template placeholders, passes every real record, and leaves default-mode
+// behavior alone (the default-mode expectations above are the regression guard for that).
+const strictChecks = [
+  ['template fails under --strict', () => {
+    const { code, out } = lint(join(repo, 'templates', 'AIDR-0000-template.md'), '--strict');
+    return code === 1 && out.includes('FAIL') && out.includes('template placeholder');
+  }],
+  ['--strict names the offending placeholder strings', () => {
+    const { out } = lint(join(repo, 'templates', 'AIDR-0000-template.md'), '--strict');
+    return out.includes('"Your Name"') && out.includes('"model-id-as-reported"');
+  }],
+  ['real records pass under --strict', () => {
+    const { code } = lint(join(repo, 'decisions'), '--strict');
+    return code === 0;
+  }],
+  ['the example record passes under --strict', () => {
+    const { code } = lint(join(repo, 'examples'), '--strict');
+    return code === 0;
+  }],
+  ['--strict does not alter default-mode exit status', () => {
+    const { code } = lint(join(repo, 'templates', 'AIDR-0000-template.md'));
+    return code === 0;
+  }],
+];
+
+console.log('strict mode (opt-in placeholder detection, must not change conformance):');
+for (const [name, fn] of strictChecks) {
+  let ok = false;
+  try { ok = fn(); } catch { ok = false; }
+  if (!ok) failures++;
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${name}`);
+}
+
 if (!runAssembleSuite()) failures++;
 
-const total = invalid.length + valid.length + 1;
+const total = invalid.length + valid.length + strictChecks.length + 1;
 console.log(`\n${failures === 0 ? 'PASS' : 'FAIL'}: ${total - failures}/${total} checks passed`);
 process.exit(failures === 0 ? 0 : 1);

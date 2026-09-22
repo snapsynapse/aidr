@@ -2,6 +2,8 @@
 
 Status: local candidate prepared and staged; local verification and automated accessibility gate passed. Preparation and staging authorized; commit, push, tag and publication not authorized by this session.
 
+> **Correction, 2026-09-22.** This document describes the state as of 2026-09-05 and was not updated afterwards. Sam subsequently authorized the commit and then the push. Commit a67c41d is on origin/main, CI and the Pages deployment both concluded success at that commit, and it is the bytes aidr.work serves. Statements below that push and deployment are unperformed are superseded. Tag and GitHub Release remain genuinely unperformed, and the pre-publication steps in this document still apply to those. See `release-state-2026-09-05.json`.
+
 ## Scope
 
 Open-spec repository, documentation-only patch release. Latest GitHub release is v0.2.0. GitHub main and local HEAD were verified at 6cfcc807cfbb67e193972070b5d6dd23ca4b8e72 on 2026-09-05; no remote v0.2.1 tag existed. Version choice: v0.2.1 because accumulated changes add documentation and conformance coverage without changing the normative specification or runtime API. SPEC.md remains v0.1.0; the skill bundle is v1.0.1 (SKILL.md v2).
@@ -10,7 +12,7 @@ Candidate changes include the previously landed Ringer record/recipe and conform
 
 ## Verification
 
-- make check passes: 20/20 top-level checks, including 11/11 assembler checks. All shipped records lint clean.
+- make check passes: 20/20 top-level checks, including 11/11 assembler checks, as of 2026-09-05; 25/25 as of 2026-09-22 after strict-mode checks were added. All shipped records lint clean.
 - Clean-directory consumer smoke passes: copy the template, replace placeholders, form an open single-position record, then lint with no earned claims. This is synthetic verification, never adoption evidence.
 - Local documentation targets resolve; JSON-LD and sitemap XML parse; candidate versions agree.
 - Assistant-guide copies are byte-identical; updated skill and bundle changelog SHA-256 values match their manifest.
@@ -40,4 +42,4 @@ Before publishing, finalize candidate-only wording and rebuild the archives from
 
 ## Local commit boundary
 
-Sam authorized staging and local commit, with human arbitration before any push. The tracked governance inventory wording is qualified to exclude separate untracked cross-entity reviews. No review position or arbitration is included in this documentation commit. Candidate archives are rebuilt after this scoped correction; prior archive hashes identify older bytes. Commit identity and refreshed package hashes are recorded in the local delivery receipt. Push, tag, release and deployment remain unperformed.
+Sam authorized staging and local commit, with human arbitration before any push. The tracked governance inventory wording is qualified to exclude separate untracked cross-entity reviews. No review position or arbitration is included in this documentation commit. Candidate archives are rebuilt after this scoped correction; prior archive hashes identify older bytes. Commit identity and refreshed package hashes are recorded in the local delivery receipt. Push, tag, release and deployment remain unperformed. (Superseded 2026-09-22: push and deployment were performed and verified; tag and release were not. See the correction at the top of this document.)

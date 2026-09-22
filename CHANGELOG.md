@@ -5,6 +5,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+### Added
+
+- `audits/README.md`: index naming which audit is current, which are supporting evidence and which are superseded, plus the rule that an audit is a dated observation and the repository wins on disagreement
+- `decisions/README.md`: what each tracked record decided, why AIDR-0001 lives in `examples/`, why the numbering has gaps, and that record IDs are repository-scoped
+- `aidr-lint --strict`: opt-in mode failing records that still carry strings from the shipped template, with five conformance checks covering it. Default behavior is unchanged and conformance is still defined by SPEC.md; an unedited template copy remains structurally conforming
+- `findTemplatePlaceholders` and `TEMPLATE_PLACEHOLDERS` in `tools/lib/aidr-core.mjs`
+- CONTRIBUTING.md: record IDs are repository-scoped, and the `repo#AIDR-NNNN` convention for citing a record outside its own repository. Contribution guidance, not a normative rule; formalizing it in SPEC.md would need its own decision record
+
+### Changed
+
+- Landing page: byline and footer now read "v0.2.1 release candidate" rather than "v0.2.1", matching `docs/llms.txt` and CHANGELOG, with the latest published release named in the footer
+- Landing page Quick start: added a repository acquisition step, since the first command referenced a path a web visitor did not have. Steps renumbered to four
+- Conformance suite is now 25 top-level checks, including 11 assembler checks
+- `audits/release-state-2026-09-05.json`: corrected. It recorded `candidate_head` as null and publication as blocked, both written before the push was authorized and never updated
+- `audits/release-readiness-2026-09-05.md`: correction note added. Push and deployment were performed and verified; tag and GitHub Release remain unperformed
+- `audits/handoff-relevance-2026-09-05.md`: corrected a stale skill digest that named the pre-v0.2.1 bundle
+
 ## [0.2.1] - 2026-09-05
 
 Prepared locally; not yet published. Repository documentation and conformance-coverage release only. SPEC.md remains v0.1.0; the template and runtime tools are unchanged.

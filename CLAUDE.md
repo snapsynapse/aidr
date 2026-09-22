@@ -17,12 +17,12 @@ AIDR (AI Decision Records) is a single-file markdown format for recording conseq
 
 - `SPEC.md` — normative format specification (ratified v0.1.0).
 - `templates/AIDR-0000-template.md` — copy-and-fill template for new records.
-- `decisions/` — real, tracked AIDR records for this repo's own decisions (AIDR-0002 onward).
+- `decisions/` — real, tracked AIDR records for this repo's own decisions (AIDR-0002 onward). `decisions/README.md` explains the numbering, why AIDR-0001 sits in `examples/`, and that record IDs are repository-scoped.
 - `examples/` — worked examples not treated as this repo's own governance records (AIDR-0001).
 - `tools/aidr-lint.mjs`, `tools/aidr-assemble.mjs` — reference linter and position-file assembler, both zero-dependency; shared parser core in `tools/lib/aidr-core.mjs`.
 - `tests/` — conformance suite (`tests/run.mjs`, `tests/assemble.test.mjs`, `tests/fixtures/`) pinning the linter to `SPEC.md`.
 - `skills/aidr/` - canonical home for the agent-agnostic AIDR Skill (SKILL.md, MANIFEST.yaml, CHANGELOG.md); teaches an agent to open a record, position, object, assemble, lint, and request arbitration. It never authors arbitration itself.
-- `audits/` - tracked current-state assessments. Use the latest handoff-relevance audit instead of private historical handoffs as an execution packet.
+- `audits/` - tracked current-state assessments. Read `audits/README.md` first: it names which audit is current, which are supporting evidence, and which are superseded. Use the latest handoff-relevance audit instead of private historical handoffs as an execution packet.
 - `docs/` — the aidr.work static site (landing page, `why.html`, `llms.txt`/`llms-full.txt`, `.well-known/assistant-guide.txt`).
 - `RECIPES.md` — runner-agnostic position-sweep recipe (fan a brief to N providers, assemble, lint-gate).
 - `INTENT.md` — roadmap, design rules, open decisions, exceptions to repo standards, changelog of intent itself.
@@ -54,4 +54,4 @@ CI runs the same two steps on Node 20 for every PR and push to `main`.
 - The release’s tracked governance inventory contains four arbitrated decisions (AIDR-0001 through AIDR-0004). Separate untracked cross-entity review material remains open and is excluded from this release. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
 - Spec remains v0.1.0 (ratified). Latest published repo release is v0.2.0; v0.2.1 is prepared locally, not published.
 - For adoption evidence and MCP entry conditions, read INTENT.md and audits/handoff-relevance-2026-09-05.md. For candidate validation and publication prerequisites, read audits/release-readiness-2026-09-05.md.
-- Health: make check passes 20/20 top-level checks, including 11/11 assembler checks, as of 2026-09-05.
+- Health: make check passes 25/25 top-level checks, including 11/11 assembler checks, as of 2026-09-22.

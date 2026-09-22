@@ -122,6 +122,34 @@ export function lintFile(path) {
   return { errors, claims };
 }
 
+// Strings the shipped template carries as placeholders. A real record replaces all of
+// them. These are used only by the opt-in --strict lint mode: conformance is defined by
+// SPEC.md, and an unedited template is structurally conforming, so finding these is a
+// warning about unfinished authoring, never a conformance failure.
+export const TEMPLATE_PLACEHOLDERS = [
+  'Short noun phrase naming the decision',
+  'Why this decision exists and what is at stake.',
+  'One decidable question, stated so a reader can tell',
+  'agent-label',
+  'model-id-as-reported',
+  'vendor-name',
+  'different-vendor',
+  'One sentence stating the position.',
+  'Prose argument for the position.',
+  'Concrete failure mode, contradiction, or risk.',
+  'One sentence stating what was decided.',
+  'Human-authored rationale.',
+  'Your Name',
+  'https://example.com/',
+  '2026-01-01',
+  '2026-01-02',
+];
+
+// Returns the placeholder strings still present in a record, in template order.
+export function findTemplatePlaceholders(text) {
+  return TEMPLATE_PLACEHOLDERS.filter((needle) => text.includes(needle));
+}
+
 export function collectAidrFiles(target) {
   const st = statSync(target);
   if (st.isFile()) return [target];

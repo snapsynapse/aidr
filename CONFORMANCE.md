@@ -43,6 +43,22 @@ node tests/run.mjs
 The first command lints the shipped records. The second runs the conformance suite
 (`tests/README.md`), which pins the reference linter to SPEC.md: every invalid fixture
 must be rejected on its specific rule, and every valid record must earn exactly its
-claim set. Suite last run 2026-09-05: 20/20 top-level checks passed, including 11/11 assembler checks.
+claim set. Suite last run 2026-09-22: 25/25 top-level checks passed, including 11/11 assembler checks.
 
 CI runs these same checks on pushes to `main` and on pull requests.
+
+## Strict mode
+
+The linter accepts an optional `--strict` flag:
+
+```bash
+node tools/aidr-lint.mjs --strict decisions/
+```
+
+Strict mode fails any record that still carries strings from the shipped template. This
+is an authoring aid, not a conformance rule. An unedited template copy is structurally
+conforming and earns all three claims, because the claims are structural by design and
+the linter cannot read intent. Strict mode catches the common first-run mistake of
+linting a template copy before writing anything into it. Conformance is still defined by
+SPEC.md; adding or removing a placeholder string never changes whether a record
+conforms.

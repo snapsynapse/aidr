@@ -46,6 +46,15 @@ A record is the single source of truth for its own decision. By design AIDR has 
 - If a participant cannot reach the repository, arrange access to an isolated position file it can author. The shipped assembler may copy that authored text verbatim into the record; this mechanical operation does not transfer authorship. Do not paraphrase or invent another participant's position.
 - Only the human arbiter writes the Arbitration section, directly and in their own words (see Change Rules).
 - Records live in `decisions/` (SPEC section 3); use one location per repository.
+- Take the next unused number in that repository. Numbers are allocated once and never reused, so gaps are expected and are not errors.
+
+### Record IDs are repository-scoped
+
+An `AIDR-NNNN` ID identifies a record within one repository. It is not globally unique. Several repositories can and do maintain independent sequences, so a bare `AIDR-0002` is ambiguous the moment more than one repository is in view.
+
+When citing a record outside its own repository, qualify it with the repository name: `harnessie#AIDR-0002`, `guidecheck#AIDR-0001`. Inside a repository, an unqualified ID always means that repository's record.
+
+This is contribution guidance rather than a normative rule. SPEC.md v0.1.0 does not define a global namespace, and this note does not add one; it records the convention that keeps citations unambiguous today. Formalizing it would be a normative change and would require its own decision record.
 
 ## Pull Request Checklist
 

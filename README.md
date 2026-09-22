@@ -92,6 +92,15 @@ node tools/aidr-lint.mjs examples/ templates/AIDR-0000-template.md decisions/
 node tests/run.mjs
 ```
 
+Add `--strict` to have the linter also fail records that still contain template
+placeholder text. Useful right after copying the template; see
+[CONFORMANCE.md](CONFORMANCE.md) for why this is an authoring aid rather than a
+conformance rule.
+
+```bash
+node tools/aidr-lint.mjs --strict decisions/
+```
+
 ## When to use AIDR
 
 Use it when a decision involves AI positions and someone will later need to reconstruct why it was made: architecture calls, release gates, security-relevant changes, public claims. Skip it for routine work; a decision record nobody needed is noise.

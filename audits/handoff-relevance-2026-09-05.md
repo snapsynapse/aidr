@@ -22,8 +22,8 @@ The two LocalBrain handoffs and private working-session evidence remain in place
 
 ## Validation
 
-- make check: PASS, 20/20 top-level checks including 11/11 assembler checks; all shipped records lint-pass.
-- Skill SHA-256 matches MANIFEST.yaml: 3643c96ee16b67798a05810863e2ca835111857c1339f2e1cf34e2a6f71413ea.
+- make check: PASS, 20/20 top-level checks including 11/11 assembler checks as of 2026-09-05; 25/25 as of 2026-09-22 after strict-mode checks were added. All shipped records lint-pass.
+- Skill SHA-256 matches MANIFEST.yaml. Corrected 2026-09-22: the digest recorded here was 3643c96ee16b67798a05810863e2ca835111857c1339f2e1cf34e2a6f71413ea, which is the SKILL.md at baseline 6cfcc80. The v0.2.1 candidate updated the file; the current digest is 42aa59788c249f294983ea6ab0497af252a7d1d62e6b9373f2ffbf10316c8995 and MANIFEST.yaml records that value. The assertion that file and manifest agree still holds.
 - SPEC.md has no diff between local v0.1.0 and v0.2.0 tags, supporting the stability condition.
 - Bounded inventory of immediate Git repositories' decisions/ and docs/decisions/ directories found the two open PAICE records. This is not proof that no additional evidence exists elsewhere or remotely.
 
