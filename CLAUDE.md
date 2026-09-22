@@ -49,9 +49,9 @@ node tests/run.mjs
 
 CI runs the same two steps on Node 20 for every PR and push to `main`.
 
-## Current state (as of 2026-09-05 assessment)
+## Current state (as of the 2026-09-22 release)
 
 - The release’s tracked governance inventory contains four arbitrated decisions (AIDR-0001 through AIDR-0004). Separate untracked cross-entity review material remains open and is excluded from this release. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
-- Spec remains v0.1.0 (ratified). Latest published repo release is v0.2.0; v0.2.1 is prepared locally, not published.
+- Spec remains v0.1.0 (ratified). Latest published repo release is v0.3.0 (2026-09-22). The 0.2.1 candidate was never published and is superseded by it.
 - For adoption evidence and MCP entry conditions, read INTENT.md and audits/handoff-relevance-2026-09-05.md. For candidate validation and publication prerequisites, read audits/release-readiness-2026-09-05.md.
 - Health: make check passes 25/25 top-level checks, including 11/11 assembler checks, as of 2026-09-22.

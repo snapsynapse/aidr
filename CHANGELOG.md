@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+## [0.3.0] - 2026-09-22
+
+Documentation, navigation and tooling release. SPEC.md remains v0.1.0: the format is
+unchanged and every record conforming to v0.1.0 still conforms. The minor bump is for
+the new opt-in `--strict` linter mode, which adds a capability without changing what
+conformance means.
+
+This release supersedes the 0.2.1 candidate below, which was prepared on 2026-09-05 but
+never published as a tag or GitHub Release. Everything in it ships here.
+
 ### Added
 
 - `audits/README.md`: index naming which audit is current, which are supporting evidence and which are superseded, plus the rule that an audit is a dated observation and the repository wins on disagreement
@@ -15,7 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Landing page: byline and footer now read "v0.2.1 release candidate" rather than "v0.2.1", matching `docs/llms.txt` and CHANGELOG, with the latest published release named in the footer
+- Landing page: the byline and footer advertised "v0.2.1" while no such release existed. Corrected first to "v0.2.1 release candidate", matching `docs/llms.txt`, and then to v0.3.0 on publication
+- Version and date propagated to the landing page, citation metadata, sitemap and discovery files
 - Landing page Quick start: added a repository acquisition step, since the first command referenced a path a web visitor did not have. Steps renumbered to four
 - Conformance suite is now 25 top-level checks, including 11 assembler checks
 - `audits/release-state-2026-09-05.json`: corrected. It recorded `candidate_head` as null and publication as blocked, both written before the push was authorized and never updated
@@ -24,7 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [0.2.1] - 2026-09-05
 
-Prepared locally; not yet published. Repository documentation and conformance-coverage release only. SPEC.md remains v0.1.0; the template and runtime tools are unchanged.
+Never published as a tag or GitHub Release; superseded by 0.3.0, which includes all of it. Retained here because the work is real and the entry is the record of it. Repository documentation and conformance-coverage release only. SPEC.md remains v0.1.0; the template and runtime tools are unchanged.
 
 ### Added
 

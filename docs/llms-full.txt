@@ -7,8 +7,8 @@
 
 Canonical: https://aidr.work/
 Repository: https://github.com/snapsynapse/aidr
-Updated: 2026-09-05
-Repository release candidate: 0.2.1 (specification remains 0.1.0)
+Updated: 2026-09-22
+Repository release: 0.3.0 (specification remains 0.1.0)
 
 ## What AIDR is
 

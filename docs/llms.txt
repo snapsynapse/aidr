@@ -2,8 +2,8 @@
 
 > One-file AI decision records with human arbitration
 
-Updated: 2026-09-05
-Repository release candidate: 0.2.1 (specification remains 0.1.0)
+Updated: 2026-09-22
+Repository release: 0.3.0 (specification remains 0.1.0)
 
 Multi-model tools increasingly show you where models disagree, then the disagreement evaporates into a chat answer. Execution logs tell you what ran. Neither answers who objected before we acted, and who decided. AIDR makes that answer a plain file in your repo.
 
