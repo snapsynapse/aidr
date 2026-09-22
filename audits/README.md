@@ -18,8 +18,8 @@ Two rules apply to everything here:
 | Document | Use it for |
 |---|---|
 | [handoff-relevance-2026-09-05.md](handoff-relevance-2026-09-05.md) | **The execution pointer.** Disposition of every processed handoff and the current bounded work packet. Named as authoritative by `INTENT.md`. |
-| [release-state-2026-09-05.json](release-state-2026-09-05.json) | Machine-readable release step state. Corrected 2026-09-22; see `correction_note`. |
-| [release-readiness-2026-09-05.md](release-readiness-2026-09-05.md) | The v0.2.1 publication sequence and its prerequisites. Carries a 2026-09-22 correction at the top: push and deployment happened; tag and release did not. |
+| [release-state-2026-09-05.json](release-state-2026-09-05.json) | Machine-readable release step state. All steps complete as of the v0.3.0 publication on 2026-09-22; see `correction_note` for what this file previously got wrong. |
+| [release-readiness-2026-09-05.md](release-readiness-2026-09-05.md) | The publication sequence and its prerequisites. Carries a 2026-09-22 correction at the top. The candidate it describes shipped as v0.3.0 on 2026-09-22, not as 0.2.1. |
 
 ## Supporting evidence
 

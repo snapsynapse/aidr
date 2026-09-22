@@ -2,11 +2,11 @@
   "schema_version": "1.0",
   "repository": "https://github.com/snapsynapse/aidr",
   "profile": "open-spec",
-  "authority": "R3 (commit and push to main authorized; no tag or GitHub Release)",
+  "authority": "R4 (commit, push, tag and GitHub Release authorized and performed)",
   "start_head": "6cfcc807cfbb67e193972070b5d6dd23ca4b8e72",
-  "candidate_head": "a67c41d339d3e70bc3baaf07e652f9cf9d13a5bb",
-  "candidate_version": "0.2.1",
-  "updated_at": "2026-09-22T20:30:00+00:00",
+  "candidate_head": "55c7efe883cc6518a6a0e49f016545baba255f4f",
+  "candidate_version": "0.3.0",
+  "updated_at": "2026-09-22T21:05:00+00:00",
   "steps": [
     {
       "id": "candidate-content",
@@ -36,23 +36,23 @@
     {
       "id": "candidate-ci",
       "status": "completed",
-      "evidence": "GitHub Actions run 'CI' concluded success at head_sha a67c41d339d3e70bc3baaf07e652f9cf9d13a5bb; 'pages build and deployment' also concluded success. Verified 2026-09-22 via the Actions API."
+      "evidence": "GitHub Actions run 'CI' concluded success at head_sha a67c41d339d3e70bc3baaf07e652f9cf9d13a5bb; 'pages build and deployment' also concluded success. Verified 2026-09-22 via the Actions API. Release commit 55c7efe: CI success and pages build and deployment success, verified 2026-09-22."
     },
     {
       "id": "publication",
-      "status": "partial",
-      "evidence": "Commit a67c41d was pushed to origin/main and is the deployed Pages source. No v0.2.1 tag and no GitHub Release exist; remote tags are v0.1.0 and v0.2.0 only. Verified 2026-09-22 via git ls-remote and the releases API."
+      "status": "completed",
+      "evidence": "Tag v0.3.0 at 55c7efe pushed to origin, and GitHub Release 'v0.3.0 - strict lint mode, audit index, record-sequence docs' published with four assets: aidr-0.3.0-source.zip, aidr-skill-1.0.1.skill, SHA256SUMS and BUILDINFO.json. Verified via gh release list and gh release view."
     },
     {
       "id": "deployment-verification",
       "status": "completed",
-      "evidence": "https://aidr.work/ served bytes byte-identical to docs/index.html at a67c41d, verified 2026-09-22. Subsequent commit 51b5430 (landing-page version wording and Quick start acquisition step) is also live and verified."
+      "evidence": "https://aidr.work/ served bytes byte-identical to docs/index.html at a67c41d, verified 2026-09-22. Subsequent commit 51b5430 (landing-page version wording and Quick start acquisition step) is also live and verified. Release commit 55c7efe verified live: aidr.work serves v0.3.0 in the byline and footer, and llms.txt reports release 0.3.0 with Updated 2026-09-22."
     },
     {
       "id": "packaging",
       "status": "completed",
-      "evidence": "Local source ZIP and skill package built from staged bytes. Extracted source make check and extracted skill validation pass; ZIP integrity and membership verified. dist/v0.2.1/BUILDINFO.json and SHA256SUMS identify the candidate. Rebuild from the final tag before publication."
+      "evidence": "Archives rebuilt from the tagged tree, not from the stale 0.2.1 candidate. Source ZIP sha256 ad20c983f191e73171c13c43b60c90156360e20d2a2392cd6b4f650117e9b2ce; skill package unchanged at bundle 1.0.1, sha256 123320b5fbbf193736c8a3d9110cbd85c9f069ee04758b5fae6dd39897b446b9, its three files verified byte-identical to the working tree. make check passed 25/25 inside the extracted archive. dist/v0.3.0/BUILDINFO.json records a per-file digest of all 85 tagged files."
     }
   ],
-  "correction_note": "Corrected 2026-09-22. The 2026-09-05 snapshot was written before Sam authorized the push and was never updated afterwards, so it recorded candidate_head as null and publication as blocked while the candidate was in fact committed and pushed. Steps below now reflect verified git and GitHub state. Tag and GitHub Release remain genuinely unperformed."
+  "correction_note": "Corrected 2026-09-22. The 2026-09-05 snapshot was written before Sam authorized the push and was never updated afterwards, so it recorded candidate_head as null and publication as blocked while the candidate was in fact committed and pushed. Steps below now reflect verified git and GitHub state. Tag and GitHub Release remain genuinely unperformed. Updated again 2026-09-22 on publication: the candidate shipped as v0.3.0, not 0.2.1. The tree had gained the opt-in --strict linter mode after this snapshot was written, and a new backwards-compatible capability is a minor bump under Semantic Versioning, so a patch number would have misdescribed it. The 0.2.1 candidate was never tagged or released and is superseded."
 }
