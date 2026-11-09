@@ -36,7 +36,7 @@ AIDR (AI Decision Records) is a single-file markdown format for recording conseq
 - Only a human may write the Arbitration section and resolve dissent — this is a hard design invariant, repeated across README, INTENT.md, and the skill.
 - Records carry three checkable conformance claims: `independent-positions`, `dissent-preserved`, `human-arbitrated`.
 - Vendor neutrality: no field names a specific provider as required.
-- New decisions go in `decisions/`, numbered sequentially from the current highest (`AIDR-0004` is the latest as of this assessment).
+- New decisions go in `decisions/`, numbered sequentially from the current highest (`AIDR-0006` is the latest as of this assessment; `AIDR-0005` was never written, and skipped numbers are not reusable).
 
 ## Build / verify
 
@@ -51,7 +51,7 @@ CI runs the same two steps on Node 20 for every PR and push to `main`.
 
 ## Current state (as of the 2026-09-22 release)
 
-- The release’s tracked governance inventory contains four arbitrated decisions (AIDR-0001 through AIDR-0004). Separate untracked cross-entity review material remains open and is excluded from this release. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
+- The tracked governance inventory contains five records: AIDR-0001 through AIDR-0004 arbitrated, and AIDR-0006 open. AIDR-0006 (provisional Aggregated Intelligence claims, questions A and B) carries recovered positions and an objection round but no arbitration; only the named human may write it. Its working state is in the gitignored `working-session/TURNFILE.yaml` at `awaiting-human-decisions`. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
 - Spec remains v0.1.0 (ratified). Latest published repo release is v0.3.0 (2026-09-22). The 0.2.1 candidate was never published and is superseded by it.
 - For adoption evidence and MCP entry conditions, read INTENT.md and audits/handoff-relevance-2026-09-05.md. For candidate validation and publication prerequisites, read audits/release-readiness-2026-09-05.md.
 - Health: make check passes 25/25 top-level checks, including 11/11 assembler checks, as of 2026-09-22.

@@ -23,8 +23,8 @@ Formal, precise, spec-like in normative documents (SPEC.md uses RFC 2119 keyword
 
 ## Current status
 
-- Spec v0.1.0 ratified (2026-07-02); repo release v0.2.0 (2026-07-05); v0.2.1 documentation release candidate prepared locally, not published; see audits/release-readiness-2026-09-05.md.
-- The release’s tracked governance inventory contains four arbitrated, closed records (AIDR-0001–0004). Separate untracked cross-entity review material remains open and is excluded from this release. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
+- Spec v0.1.0 ratified (2026-07-02); latest published repo release v0.3.0 (2026-09-22). The v0.2.1 documentation candidate was never published and is superseded by it; see audits/release-readiness-2026-09-05.md.
+- The tracked governance inventory contains five records: AIDR-0001–0004 arbitrated and closed, and AIDR-0006 open. AIDR-0006 (provisional Aggregated Intelligence claims, questions A and B) awaits human arbitration; its working state is in the gitignored `working-session/TURNFILE.yaml` at `awaiting-human-decisions`. CONTRIBUTING.md retains a separate procedural question about mechanical metadata edits.
 - Portfolio status: graduated `incubating` -> `active` (2026-07-02) in the maintainer's portfolio manifest.
 - Companion agent-agnostic AIDR Skill (`skills/aidr/`) ships in-repo as the canonical distribution home (per AIDR-0004).
 - The phase-2 format-stability condition is met. The 2026-09-05 bounded local audit found open, lint-passing records in GuideCheck and PAICE Foundation, neither arbitrated or earning claims yet. Harnessie has eight arbitrated records plus an open AIDR-0009, but is a Snap Synapse project. The two-PAICE-repo dogfood condition remains unmet. See audits/handoff-relevance-2026-09-05.md for the current work packet.
